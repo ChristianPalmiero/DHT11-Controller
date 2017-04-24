@@ -1,6 +1,11 @@
 # DHT11 Controller Project
 ## Intro
-This project consist of a complete digital hardware design from RTL down to synthesis of a controller for the [DHT11 Humidity and Temperature Sensor](DTH11.pdf) manufactured by D-Robotics UK. 
+This project consist of a complete digital hardware design of a controller for the [DHT11 Humidity and Temperature Sensor](DTH11.pdf) manufactured by D-Robotics UK:
+* Specification
+* Architecture design
+* Development of the hardware model in VHDL
+* Validation by simulation
+* Synthesis for the [Zybo board](zybo_rm.pdf), performance evaluation and optimization
 
 ## Authors
 * Christian Palmiero
