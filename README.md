@@ -29,8 +29,8 @@ For every bit of data :
   1. GND for 50 μs  
   2. VCC for 26-28 μs to send 0 OR VCC for 70 μs to send 1
 
-## Inputs and Outputs  
-### Button:  
+### Inputs and Outputs  
+#### Button:  
 
 
 We use the push button to start to read for the sensor.  
@@ -38,7 +38,7 @@ But :
   - After power up, the button should have no effect until 1 sec  
   - Use debouncing function to correct default of the button  
 
-### Switches:  
+#### Switches:  
 
 
   - 1 switch to select the data to display : temperature or humidity (SW0). When the switch is set to 1, we read the humidity level, when it is 0, we read the temperature.  
@@ -85,7 +85,7 @@ Remark: when the PE bit is set, we can use the other LED to display the kind of 
 
 ```
 
-### LEDs :  
+#### LEDs :  
 
 
 We use the 4 LEDs to display 4 bits of data (the 4 bits chosen by the switches SW1 and SW2 or the specific states specified above).  
