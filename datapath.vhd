@@ -4,39 +4,42 @@ use ieee.std_logic_unsigned.all;
 
 entity datapath is
   port(
-       data_in  :       inout std_ulogic;
+       data_in          :           inout std_ulogic;
        SW0		: 	    in    std_ulogic;
        SW1		: 	    in    std_ulogic;
        SW2		: 	    in    std_ulogic;
        SW3		: 	    in    std_ulogic;
        rst		:	    in    std_ulogic;
-       clk		:	    in    std_ulogic;
+       clk		:	    in    std_ulogic; 
+       en               :           in    std_ulogic;
+       init_enable      :           in    std_ulogic;    --when enabled final count is set to the value present on init_counter
        BTN		:	    in    std_ulogic;
-       shift_enable:    in    std_ulogic;
-       busy_bit :       in    std_ulogic;
-       protocol_error:  in    std_ulogic;
-       final_count:     out   std_ulogic;
-       data_drv :       out   std_ulogic;
-       LEDs     :       out   std_ulogic_vector(3 DOWNTO 0);
-       timer_out:	    out   std_ulogic_vector(5 DOWNTO 0)
+       shift_enable     :           in    std_ulogic;
+       busy_bit         :           in    std_ulogic;
+       protocol_error   :           in    std_ulogic;
+       init_counter     :           in    integer;
+       final_count      :           out   std_ulogic;
+       data_drv         :           out   std_ulogic;
+       LEDs             :           out   std_ulogic_vector(3 DOWNTO 0);
+       timer_out        :  	    out   std_ulogic_vector(5 DOWNTO 0)
   );
 end entity datapath;
 
 
 architecture beh of datapath is
   signal sipo_out_mux_in	:  std_ulogic_vector(31 DOWNTO 0);  
-  signal checksum			:  std_ulogic_vector(7 DOWNTO 0);
+  signal checksum		:  std_ulogic_vector(7 DOWNTO 0);
   signal nib_sel_to_A		:  std_ulogic_vector(3 DOWNTO 0);
-  signal checksum_ver_to_B  :  std_ulogic_vector(3 DOWNTO 0);
-  signal Q					:  std_ulogic_vector(39 DOWNTO 0);
-  signal cnt                :  integer range 0 to 39;
-  signal timer_cnt			:  integer;
+  signal checksum_ver_to_B      :  std_ulogic_vector(3 DOWNTO 0);
+  signal Q			:  std_ulogic_vector(39 DOWNTO 0);
+  signal cnt                    :  integer range 0 to 39;
+  signal count                  :  integer;
+  signal threshold              :  integer;
 
 begin
 
   data    <= '0' when data_drv = '1' else 'H';
   data_in <= data;
-
 
   SIPO: process(clk)
   begin
@@ -82,7 +85,7 @@ begin
   Checksum_controller: process(checksum, sipo_out_mux_in)
   variable sum: std_ulogic_vector(7 DOWNTO 0);
   begin
-  	sum:= sipo_out_mux_in(31 DOWNTO 24) + sipo_out_mux_in(23 DOWNTO 16) + sipo_out_mux_in(15 DOWNTO 8) + sipo_out_mux_in(7 DOWNTO 0);
+    sum:= sipo_out_mux_in(31 DOWNTO 24) + sipo_out_mux_in(23 DOWNTO 16) + sipo_out_mux_in(15 DOWNTO 8) + sipo_out_mux_in(7 DOWNTO 0);
     if sum = checksum then
       checksum_ver_to_B(0) = '0';
     else
@@ -99,12 +102,24 @@ begin
     LEDs <= nib_sel_to_A when (SW3 = '1') else checksum_ver_to_B;
   end process MUX;
 
-  TIMER: process(clk)
+  CNT: process(clk)
   begin
-  end process TIMER
-
-
-
-
+    if(clk' event and clk = '1') then
+        final_count <= '0';
+        if(rst='0') then
+            count <= 0;
+        elsif(init_enable = '1') then
+            threshold <= init_counter;
+            count <= 0; --To be decided if reset or not
+        elsif(en = '1') then
+            if(count = threshold - 1) then
+                final_count <= '1';
+                count <= 0;
+            else
+                count <= count + 1;
+            end if;
+        end if;
+    end if;
+  end process CNT;
 
 end architecture beh;

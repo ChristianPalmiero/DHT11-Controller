@@ -96,5 +96,29 @@ We use the 4 LEDs to display 4 bits of data (the 4 bits chosen by the switches S
 ## Architecture Design
 ### Common Interface
 
+The DHT11 Controller and the DHT11 sensor communicates with a one-bit communication bit with a pull-up resistor and a drive low protocol.
+
+``` vhdl
+library ieee;
+use ieee.std_logic_1164.all;
+...
+entity dht11_top is
+  port(...
+       data:    inout std_logic;
+       ...
+  );
+end entity dht11_top;
+architecture rtl of dht11_top is
+  signal data_in:  std_ulogic;
+  signal data_drv: std_ulogic;
+  ...
+begin
+  data    <= '0' when data_drv = '1' else 'H';
+  data_in <= data;
+  ...
+end architecture rtl;
+```
+
 ### Block diagram  
+
 
