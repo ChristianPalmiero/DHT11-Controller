@@ -98,7 +98,7 @@ We use the 4 LEDs to display 4 bits of data (the 4 bits chosen by the switches S
 
 The DHT11 Controller and the DHT11 sensor communicates with a one-bit communication bit with a pull-up resistor and a drive low protocol.
 
-```vhdl
+```
 library ieee;
 use ieee.std_logic_1164.all;
 ...
