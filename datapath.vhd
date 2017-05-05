@@ -18,7 +18,7 @@ entity datapath is
        busy_bit         :           in    std_ulogic;
        protocol_error   :           in    std_ulogic;
        init_counter     :           in    integer;
-       final_count      :           out   std_ulogic;
+       start		:	    out   std_ulogic;
        data_drv         :           out   std_ulogic;
        LEDs             :           out   std_ulogic_vector(3 DOWNTO 0);
        timer_out        :  	    out   std_ulogic_vector(5 DOWNTO 0)
@@ -33,13 +33,17 @@ architecture beh of datapath is
   signal checksum_ver_to_B      :  std_ulogic_vector(3 DOWNTO 0);
   signal Q			:  std_ulogic_vector(39 DOWNTO 0);
   signal cnt                    :  integer range 0 to 39;
+  signal fc			:  std_ulogic;
+  signal final_count		:  std_ulogic;
+  signal final_cnt		:  std_ulogic;
+  signal falling_edge		:  std_ulogic;
   signal count                  :  integer;
   signal threshold              :  integer;
 
 begin
 
-  data    <= '0' when data_drv = '1' else 'H';
-  data_in <= data;
+  --data    <= '0' when data_drv = '1' else 'H';
+  --data_in <= data;
 
   SIPO: process(clk)
   begin
@@ -51,6 +55,7 @@ begin
       	cnt <= 0;
       	final_count <= '0';
       elsif(shift_enable='1') then
+        -- Left shift
         for i in 0 to 38 loop
            Q(i+1) <= Q(i);
         end loop;
@@ -87,9 +92,9 @@ begin
   begin
     sum:= sipo_out_mux_in(31 DOWNTO 24) + sipo_out_mux_in(23 DOWNTO 16) + sipo_out_mux_in(15 DOWNTO 8) + sipo_out_mux_in(7 DOWNTO 0);
     if sum = checksum then
-      checksum_ver_to_B(0) = '0';
+      checksum_ver_to_B(0) <= '0';
     else
-      checksum_ver_to_B(0) = '1';
+      checksum_ver_to_B(0) <= '1';
     end if;
   end process Checksum_controller;
 
@@ -102,10 +107,10 @@ begin
     LEDs <= nib_sel_to_A when (SW3 = '1') else checksum_ver_to_B;
   end process MUX;
 
-  CNT: process(clk)
+  COUNTER: process(clk)
   begin
     if(clk' event and clk = '1') then
-        final_count <= '0';
+        final_cnt <= '0';
         if(rst='0') then
             count <= 0;
         elsif(init_enable = '1') then
@@ -113,13 +118,41 @@ begin
             count <= 0; --To be decided if reset or not
         elsif(en = '1') then
             if(count = threshold - 1) then
-                final_count <= '1';
+                final_cnt <= '1';
                 count <= 0;
             else
                 count <= count + 1;
             end if;
         end if;
     end if;
-  end process CNT;
+  end process COUNTER;
+
+  One_second_timer: entity work.timer(arc)
+    generic map(
+      max => 50000000 --50 * 10^6 * 50 Mhz = 1 s
+    )
+    port map(
+      clk     => clk,
+      sresetn => rst,
+      fc      => fc 
+    );
+
+  Debouncer: entity work.debouncer(rtl)
+    generic map(
+      n0 => 50000, -- sampling counter wrapping value
+      n1 => 10     -- debouncing counter maximum value
+    )
+    port map(
+      clk     => clk,
+      srstn   => rst,
+      d       => BTN, 
+      q       => open, 
+      r       => open, 
+      f       => falling_edge, 
+      a       => open 
+    );
+
+  start <= falling_edge and fc;
+
 
 end architecture beh;

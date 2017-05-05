@@ -127,4 +127,7 @@ end architecture rtl;
 
 ### Block diagram  
 
+## Technical Details
+### Datapath processes
+
 
