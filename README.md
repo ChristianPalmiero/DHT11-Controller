@@ -100,7 +100,7 @@ The DHT11 Controller and the DHT11 sensor communicates with a one-bit communicat
 
 ![alt text][top-entity]
 
-[top-entity]: https://github.com/ChristianPalmiero/DHT11_Controller/img/top_entity.jpg "Top Entity"
+[top-entity]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/top_entity.jpg "Top Entity"
 
 ```vhdl
 library ieee;
