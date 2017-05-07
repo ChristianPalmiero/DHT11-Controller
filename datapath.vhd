@@ -10,7 +10,7 @@ entity datapath is
        SW2		: 	    in    std_ulogic;
        SW3		: 	    in    std_ulogic;
        rst		:	    in    std_ulogic;
-       master_clk	:	    in    std_ulogic; 
+       master_clk	:	    in    std_ulogic;
        en               :           in    std_ulogic;
        init_enable      :           in    std_ulogic;    --when enabled final count is set to the value present on init_counter
        BTN		:	    in    std_ulogic;
@@ -27,7 +27,7 @@ end entity datapath;
 
 
 architecture beh of datapath is
-  signal sipo_out_mux_in	:  std_ulogic_vector(31 DOWNTO 0);  
+  signal sipo_out_mux_in	:  std_ulogic_vector(31 DOWNTO 0);
   signal checksum		:  std_ulogic_vector(7 DOWNTO 0);
   signal nib_sel_to_A		:  std_ulogic_vector(3 DOWNTO 0);
   signal checksum_ver_to_B      :  std_ulogic_vector(3 DOWNTO 0);
@@ -36,7 +36,7 @@ architecture beh of datapath is
   signal final_count		:  std_ulogic;
   signal clk      		:  std_ulogic;
   signal final_cnt		:  std_ulogic;
-  signal falling_edge		:  std_ulogic;
+  signal fall_edge		:  std_ulogic;
   signal count                  :  integer;
   signal threshold              :  integer;
 
@@ -59,7 +59,7 @@ begin
         if cnt < 38 then
           -- Left shift
           Q <= Q(38 downto 0) & data_in;
-          cnt <= cnt + 1;        
+          cnt <= cnt + 1;
         else
           final_count <= '1';
           cnt <= 0;
@@ -73,7 +73,7 @@ begin
 
   MUXes: process(sipo_out_mux_in, SW0, SW1, SW2)
   begin
-    nib_sel_to_A <= sipo_out_mux_in(3 DOWNTO 0) when SW0='0' and SW1='0' and SW2='0' else 
+    nib_sel_to_A <= sipo_out_mux_in(3 DOWNTO 0) when SW0='0' and SW1='0' and SW2='0' else
       sipo_out_mux_in(7 DOWNTO 4) when SW0='0' and SW1='0' and SW2='1' else
       sipo_out_mux_in(11 DOWNTO 8) when SW0='0' and SW1='1' and SW2='0' else
       sipo_out_mux_in(15 DOWNTO 12) when SW0='0' and SW1='1' and SW2='1' else
@@ -102,7 +102,7 @@ begin
   begin
     LEDs <= nib_sel_to_A when (SW3 = '1') else checksum_ver_to_B;
   end process MUX;
-  
+
   PRESCALER: entity work.prescaler(arc)
     generic map(
       max => 1
@@ -110,7 +110,7 @@ begin
     port map(
       clk     => master_clk,
       sresetn => rst,
-      fc      => clk 
+      fc      => clk
     );
 
   COUNTER: process(clk)
@@ -141,11 +141,11 @@ begin
     port map(
       clk     => clk,
       srstn   => rst,
-      d       => BTN, 
-      q       => open, 
-      r       => open, 
-      f       => falling_edge, 
-      a       => open 
+      d       => BTN,
+      q       => open,
+      r       => open,
+      f       => falling_edge,
+      a       => open
     );
 
 end architecture beh;
