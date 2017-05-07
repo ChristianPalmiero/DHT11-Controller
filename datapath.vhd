@@ -45,7 +45,7 @@ begin
   --data_in <= data;
 
   SIPO: process(clk)
-  variable Q:  std_ulogic_vector(39 DOWNTO 0);
+  variable Q_var:  std_ulogic_vector(39 DOWNTO 0);
   begin
     if(clk'event and clk = '1') then
       final_count <= '0';
