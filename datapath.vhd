@@ -10,7 +10,7 @@ entity datapath is
        SW2		: 	    in    std_ulogic;
        SW3		: 	    in    std_ulogic;
        rst		:	    in    std_ulogic;
-       clk		:	    in    std_ulogic; 
+       master_clk	:	    in    std_ulogic; 
        en               :           in    std_ulogic;
        init_enable      :           in    std_ulogic;    --when enabled final count is set to the value present on init_counter
        BTN		:	    in    std_ulogic;
@@ -34,6 +34,7 @@ architecture beh of datapath is
   signal Q			:  std_ulogic_vector(39 DOWNTO 0);
   signal cnt                    :  integer range 0 to 39;
   signal final_count		:  std_ulogic;
+  signal clk      		:  std_ulogic;
   signal final_cnt		:  std_ulogic;
   signal falling_edge		:  std_ulogic;
   signal count                  :  integer;
@@ -44,10 +45,10 @@ begin
   --data    <= '0' when data_drv = '1' else 'H';
   --data_in <= data;
 
-  SIPO: process(clk)
+  SIPO: process(master_clk)
   variable Q_var:  std_ulogic_vector(39 DOWNTO 0);
   begin
-    if(clk'event and clk = '1') then
+    if(master_clk'event and master_clk = '1') then
       final_count <= '0';
       if rst = '1' then
       	Q <= (others=>'0');
@@ -101,10 +102,20 @@ begin
   begin
     LEDs <= nib_sel_to_A when (SW3 = '1') else checksum_ver_to_B;
   end process MUX;
+  
+  PRESCALER: entity work.prescaler(arc)
+    generic map(
+      max => 1
+    )
+    port map(
+      clk     => master_clk,
+      sresetn => rst,
+      fc      => clk 
+    );
 
   COUNTER: process(clk)
   begin
-    if(clk' event and clk = '1') then
+    if(clk'event and clk='1') then
         final_cnt <= '0';
         if(rst='0') then
             count <= 0;
