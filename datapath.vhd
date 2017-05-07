@@ -33,7 +33,6 @@ architecture beh of datapath is
   signal checksum_ver_to_B      :  std_ulogic_vector(3 DOWNTO 0);
   signal Q			:  std_ulogic_vector(39 DOWNTO 0);
   signal cnt                    :  integer range 0 to 39;
-  signal fc			:  std_ulogic;
   signal final_count		:  std_ulogic;
   signal final_cnt		:  std_ulogic;
   signal falling_edge		:  std_ulogic;
@@ -46,32 +45,28 @@ begin
   --data_in <= data;
 
   SIPO: process(clk)
+  variable Q:  std_ulogic_vector(39 DOWNTO 0);
   begin
     if(clk'event and clk = '1') then
+      final_count <= '0';
       if rst = '1' then
       	Q <= (others=>'0');
       	sipo_out_mux_in <= (others=>'0');
       	checksum <= (others=>'0');
       	cnt <= 0;
-      	final_count <= '0';
       elsif(shift_enable='1') then
-        -- Left shift
-        for i in 0 to 38 loop
-           Q(i+1) <= Q(i);
-        end loop;
-        Q(0) <= data_in;
-        cnt <= cnt + 1;        
+        if cnt < 38 then
+          -- Left shift
+          Q <= Q(38 downto 0) & data_in;
+          cnt <= cnt + 1;        
+        else
+          final_count <= '1';
+          cnt <= 0;
+          Q_var := Q(38 downto 0) & data_in;
+          sipo_out_mux_in <= Q_var(39 DOWNTO 8);
+          checksum <= Q_var(7 DOWNTO 0);
+         end if;
        end if;
-      
-      if cnt = 38 then
-        final_count <= '1';
-      end if;
-
-      if final_count = '1' then
-        sipo_out_mux_in <= Q(39 DOWNTO 8);
-        checksum <= Q(7 DOWNTO 0);
-        final_count <= '0';
-      end if;
     end if;
   end process SIPO;
 
@@ -127,16 +122,6 @@ begin
     end if;
   end process COUNTER;
 
-  One_second_timer: entity work.timer(arc)
-    generic map(
-      max => 50000000 --50 * 10^6 * 50 Mhz = 1 s
-    )
-    port map(
-      clk     => clk,
-      sresetn => rst,
-      fc      => fc 
-    );
-
   Debouncer: entity work.debouncer(rtl)
     generic map(
       n0 => 50000, -- sampling counter wrapping value
@@ -151,8 +136,5 @@ begin
       f       => falling_edge, 
       a       => open 
     );
-
-  start <= falling_edge and fc;
-
 
 end architecture beh;
