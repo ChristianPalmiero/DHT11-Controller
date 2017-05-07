@@ -3,8 +3,10 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 
 entity datapath is
+  generic(with_prescaler : boolean := false);
   port(
-       data_in          :           inout std_ulogic;
+       pulse  :  out std_ulogic;
+       data_in          :           in std_ulogic;
        SW0		: 	    in    std_ulogic;
        SW1		: 	    in    std_ulogic;
        SW2		: 	    in    std_ulogic;
@@ -32,13 +34,15 @@ architecture beh of datapath is
   signal nib_sel_to_A		:  std_ulogic_vector(3 DOWNTO 0);
   signal checksum_ver_to_B      :  std_ulogic_vector(3 DOWNTO 0);
   signal Q			:  std_ulogic_vector(39 DOWNTO 0);
-  signal cnt                    :  integer range 0 to 39;
+  signal cnt                    :  integer range 0 to 40;
   signal final_count		:  std_ulogic;
   signal clk      		:  std_ulogic;
+  signal prescaler_clk      		:  std_ulogic;
   signal final_cnt		:  std_ulogic;
   signal fall_edge		:  std_ulogic;
   signal count                  :  integer;
   signal threshold              :  integer;
+  signal dp: std_ulogic_vector(2 downto 0);
 
 begin
 
@@ -56,7 +60,7 @@ begin
       	checksum <= (others=>'0');
       	cnt <= 0;
       elsif(shift_enable='1') then
-        if cnt < 38 then
+        if cnt < 39 then
           -- Left shift
           Q <= Q(38 downto 0) & data_in;
           cnt <= cnt + 1;
@@ -105,13 +109,22 @@ begin
 
   PRESCALER: entity work.prescaler(arc)
     generic map(
-      max => 1
+      max => 0
     )
     port map(
       clk     => master_clk,
-      sresetn => rst,
-      fc      => clk
+      sreset  => rst,
+      fc      => prescaler_clk
     );
+
+  process(prescaler_clk, master_clk)
+  begin
+    if with_prescaler then
+      clk <= prescaler_clk;
+    else
+      clk <= master_clk;
+    end if;
+  end process;
 
   COUNTER: process(clk)
   begin
@@ -144,8 +157,16 @@ begin
       d       => BTN,
       q       => open,
       r       => open,
-      f       => falling_edge,
+      f       => fall_edge,
       a       => open
     );
+
+  PULSE_GEN: process(clk)
+  begin
+    if(clk' event and clk='1') then
+      dp <= data_in & dp(2 downto 1);
+    end if;
+  end process;
+  pulse <= dp(1) xor dp(0);
 
 end architecture beh;
