@@ -5,7 +5,6 @@ use ieee.std_logic_unsigned.all;
 entity datapath is
   generic(with_prescaler : boolean := false);
   port(
-       pulse  :  out std_ulogic;
        data_in          :           in std_ulogic;
        SW0		: 	    in    std_ulogic;
        SW1		: 	    in    std_ulogic;
@@ -20,10 +19,12 @@ entity datapath is
        busy_bit         :           in    std_ulogic;
        protocol_error   :           in    std_ulogic;
        init_counter     :           in    integer;
-       start		:	    out   std_ulogic;
-       data_drv         :           out   std_ulogic;
-       LEDs             :           out   std_ulogic_vector(3 DOWNTO 0);
-       timer_out        :  	    out   std_ulogic_vector(5 DOWNTO 0)
+       data             :           in    std_ulogic;
+       final_cnt	:           out   std_ulogic;
+       final_count	:           out   std_ulogic;
+       pulse		:           out   std_ulogic;
+       fall_edge	:           out   std_ulogic;
+       LEDs             :           out   std_ulogic_vector(3 DOWNTO 0)
   );
 end entity datapath;
 
@@ -35,14 +36,11 @@ architecture beh of datapath is
   signal checksum_ver_to_B      :  std_ulogic_vector(3 DOWNTO 0);
   signal Q			:  std_ulogic_vector(39 DOWNTO 0);
   signal cnt                    :  integer range 0 to 40;
-  signal final_count		:  std_ulogic;
   signal clk      		:  std_ulogic;
-  signal prescaler_clk      		:  std_ulogic;
-  signal final_cnt		:  std_ulogic;
-  signal fall_edge		:  std_ulogic;
+  signal prescaler_clk   	:  std_ulogic;
   signal count                  :  integer;
   signal threshold              :  integer;
-  signal dp: std_ulogic_vector(2 downto 0);
+  signal dp			: std_ulogic_vector(2 downto 0);
 
 begin
 
@@ -62,12 +60,12 @@ begin
       elsif(shift_enable='1') then
         if cnt < 39 then
           -- Left shift
-          Q <= Q(38 downto 0) & data_in;
+          Q <= Q(38 downto 0) & data;
           cnt <= cnt + 1;
         else
           final_count <= '1';
           cnt <= 0;
-          Q_var := Q(38 downto 0) & data_in;
+          Q_var := Q(38 downto 0) & data;
           sipo_out_mux_in <= Q_var(39 DOWNTO 8);
           checksum <= Q_var(7 DOWNTO 0);
          end if;
