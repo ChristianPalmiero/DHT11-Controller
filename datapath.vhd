@@ -128,14 +128,14 @@ begin
   begin
     if(clk'event and clk='1') then
         final_cnt <= '0';
-        if(rst='0') then
+        if(rst='1') then
             count <= 0;
         elsif(init_enable = '1') then
             threshold <= init_counter;
             count <= 0; --To be decided if reset or not
         elsif(en = '1') then
-            if(count = threshold - 1) then
-                final_cnt <= '1';
+            if(count = threshold - 2) then   --set to -2 to compensate  
+                final_cnt <= '1';            --the cc lost when set the counter
                 count <= 0;
             else
                 count <= count + 1;
@@ -151,7 +151,7 @@ begin
     )
     port map(
       clk     => clk,
-      srstn   => rst,
+      rst   => rst,
       d       => BTN,
       q       => open,
       r       => open,

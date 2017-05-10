@@ -81,11 +81,11 @@ STIMULI_GEN: process
                    wait until rising_edge(clk);
                  end loop;
                  BTN <= '0';
-                 for i in 1 to 49994 loop -- wait for 1 s
+                 for i in 1 to 49999994 loop -- wait for 1 s
                    wait until rising_edge(clk);
                  end loop;
                  BTN <= '1';              -- pressing the button
-                 for i in 1 to 250000 loop
+                 for i in 1 to 5000000 loop
                    wait until rising_edge(clk);
                  end loop;
                  BTN <= '0';

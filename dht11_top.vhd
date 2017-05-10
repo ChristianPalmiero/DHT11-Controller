@@ -20,10 +20,10 @@ architecture beh of dht11_top is
   signal init_counter : integer;
 
 begin
-  
+
   data_dht <= '0' when data_drv = '1' else 'H';
   data_in <= data_dht;
- 
+
   DP: entity work.datapath(beh)
     generic map(
       with_prescaler  => false
@@ -55,8 +55,8 @@ begin
     port map(
       CLK	      => clk,
       RST             => rst,
-      FINAL_COUNTER   => final_cnt,
-      FINAL_CNT       => final_count,
+      FINAL_COUNTER   => final_count,
+      FINAL_CNT       => final_cnt,
       PULSE           => pulse,
       OUT_DEBOUNCER   => fall_edge,
       EN              => en,

@@ -1,6 +1,6 @@
 --
 -- Copyright (C) Telecom ParisTech
--- 
+--
 -- This file must be used under the terms of the CeCILL. This source
 -- file is licensed as described in the file COPYING, which you should
 -- have received as part of this distribution. The terms are also
@@ -25,7 +25,7 @@ entity debouncer is
   );
   port(
     clk:   in  std_ulogic; -- clock
-    srstn: in  std_ulogic; -- synchronous active low reset
+    rst:   in  std_ulogic; -- synchronous active high reset
     d:     in  std_ulogic; -- input bouncing signal
     q:     out std_ulogic; -- output synchronized and debounced signal
     r:     out std_ulogic; -- rising edge detector
@@ -50,7 +50,7 @@ begin
   process(clk)
   begin
     if rising_edge(clk) then
-      if srstn = '0' then
+      if rst = '1' then
         cnt0 <= 0;
         cnt1 <= 0;
         sync <= (others => '0');
