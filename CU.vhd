@@ -15,7 +15,7 @@ PORT (-- Input
           SHIFT_ENABLE        : OUT STD_ULOGIC;
           BUSY_BIT            : OUT STD_ULOGIC;
           PROTOCOL_ERROR      : OUT STD_ULOGIC;
-          UNIT_COUNTER        : OUT INTEGER;
+          INIT_COUNTER        : OUT INTEGER;
           DATA		      : OUT STD_ULOGIC;
           DATA_DRV            : OUT STD_ULOGIC
      );
