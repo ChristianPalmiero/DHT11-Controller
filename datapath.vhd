@@ -5,7 +5,8 @@ use ieee.std_logic_unsigned.all;
 entity datapath is
   generic(with_prescaler : boolean := false);
   port(
-       data_in          :           in std_ulogic;
+       data_in          :           in    std_ulogic;
+       data_drv         :           in    std_ulogic;
        SW0		: 	    in    std_ulogic;
        SW1		: 	    in    std_ulogic;
        SW2		: 	    in    std_ulogic;
@@ -38,9 +39,10 @@ architecture beh of datapath is
   signal cnt                    :  integer range 0 to 40;
   signal clk      		:  std_ulogic;
   signal prescaler_clk   	:  std_ulogic;
+  signal pulse_p, pulse_d      	:  std_ulogic;
   signal count                  :  integer;
   signal threshold              :  integer;
-  signal dp			: std_ulogic_vector(2 downto 0);
+  signal dp, data_drv_dp	:  std_ulogic_vector(2 downto 0);
 
 begin
 
@@ -134,7 +136,7 @@ begin
             threshold <= init_counter;
             count <= 0; --To be decided if reset or not
         elsif(en = '1') then
-            if(count = threshold - 2) then   --set to -2 to compensate  
+            if(count = threshold - 2) then   --set to -2 to compensate
                 final_cnt <= '1';            --the cc lost when set the counter
                 count <= 0;
             else
@@ -162,9 +164,27 @@ begin
   PULSE_GEN: process(clk)
   begin
     if(clk' event and clk='1') then
-      dp <= data_in & dp(2 downto 1);
+      if (rst='1') then
+        dp <= (others=>'0');
+      else
+        dp <= data_in & dp(2 downto 1);
+      end if;
     end if;
-  end process;
-  pulse <= dp(1) xor dp(0);
+  end process PULSE_GEN;
+  pulse_p <= dp(1) xor dp(0);
+
+  SECOND_PULSE_GEN: process(clk)
+  begin
+    if(clk' event and clk='1') then
+      if (rst='1') then
+        data_drv_dp <= (others=>'0');
+      else
+        data_drv_dp <= data_drv & data_drv_dp(2 downto 1);
+      end if;
+    end if;
+  end process SECOND_PULSE_GEN;
+  pulse_d <= data_drv_dp(1) xor data_drv_dp(0);
+
+  pulse <= pulse_p and not(pulse_d);
 
 end architecture beh;

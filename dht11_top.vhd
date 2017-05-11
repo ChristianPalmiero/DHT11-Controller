@@ -30,6 +30,7 @@ begin
     )
     port map(
       data_in         => data_in,
+      data_drv        => data_drv,
       SW0             => SW(0),
       SW1	      => SW(1),
       SW2	      => SW(2),
