@@ -202,7 +202,7 @@ begin
 
   SECOND_COMPARATOR: process(out_comparator, threshold_comp, margin, count)
   begin 
-    if out_comparator = '1' then
+    if out_comp = '1' then
       if count <= 3650 or count >= 3350 then     -- 67-73 us
         out_second_comparator <= '1';
       else
