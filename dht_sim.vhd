@@ -11,20 +11,20 @@ architecture sim of dht_sim is
 
         signal data_in        : std_ulogic;
         signal rst            : std_ulogic;
-        signal SW0		        : std_ulogic;
+        signal SW0            : std_ulogic;
         signal SW1            : std_ulogic;
         signal SW2            : std_ulogic;
         signal SW3            : std_ulogic;
         signal en             : std_ulogic;
         signal master_clk     : std_ulogic;
         signal init_enable    : std_ulogic;    --when enabled final count is set to the value present on init_counter
-        signal BTN		        : std_ulogic;
+        signal BTN	      : std_ulogic;
         signal shift_enable   : std_ulogic;
         signal busy_bit       : std_ulogic;
         signal protocol_error : std_ulogic;
         signal init_counter   : integer;
         signal pulse          : std_ulogic;
-        signal start		      :	std_ulogic;
+        signal start	      :	std_ulogic;
         signal data_drv       : std_ulogic;
         signal LEDs           : std_ulogic_vector(3 DOWNTO 0);
         signal timer_out      : std_ulogic_vector(5 DOWNTO 0);
@@ -37,18 +37,18 @@ begin
              data_in          =>   data_in,
              master_clk       =>   master_clk,
              rst              =>   rst,
-             SW0		          =>   SW0,
+             SW0	      =>   SW0,
              SW1              =>   SW1,
              SW2              =>   SW2,
              SW3              =>   SW3,
              en               =>   en,
              init_enable      =>   init_enable,
-             BTN		          =>   BTN,
+             BTN	      =>   BTN,
              shift_enable     =>   shift_enable,
              busy_bit         =>   busy_bit,
              protocol_error   =>   protocol_error,
              init_counter     =>   init_counter,
-             start		        =>   start,
+             start            =>   start,
              data_drv         =>   data_drv,
              LEDs             =>   LEDs,
              timer_out        =>   timer_out

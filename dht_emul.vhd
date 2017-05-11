@@ -23,9 +23,9 @@ end entity dht_emul;
 architecture sim of dht_emul is
         signal data_dht     : std_logic;
         signal SW           : std_ulogic_vector(3 DOWNTO 0);
-        signal rst		      : std_ulogic;
-        signal clk		      : std_ulogic;
-        signal BTN		      : std_ulogic;
+        signal rst	    : std_ulogic;
+        signal clk          : std_ulogic;
+        signal BTN	    : std_ulogic;
         signal LEDs         : std_ulogic_vector(3 DOWNTO 0);
         signal timer        : integer;
         signal data_dht_drv : std_ulogic;
@@ -38,9 +38,9 @@ begin
                port map(
                     data_dht => data_dht,
                     SW       => SW,
-                    rst		   => rst,
-                    clk		   => clk,
-                    BTN		   => BTN,
+                    rst	     => rst,
+                    clk      => clk,
+                    BTN	     => BTN,
                     LEDs     => LEDs
                );
 

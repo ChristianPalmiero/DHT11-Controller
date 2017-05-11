@@ -193,7 +193,7 @@ begin
 
   COMPARATOR: process(threshold_comp, margin, count)
   begin 
-    if count <= threshold_comp+margin or count >= threshold_comp-margin then
+    if count <= threshold_comp+margin and count >= threshold_comp-margin then
       out_comparator <= '1';
     else
       out_comparator <= '0';
@@ -202,14 +202,15 @@ begin
 
   SECOND_COMPARATOR: process(out_comparator, threshold_comp, margin, count)
   begin 
+    out_second_comparator <= '0';
     if out_comparator = '1' then
-      if count <= 3650 or count >= 3350 then     -- 67-73 us
+      if count <= 3650 and count >= 3350 then     -- 67-73 us
         out_second_comparator <= '1';
       else
         out_second_comparator <= '0';
       end if;
     else
-      if count <= 1500 or count >= 1200 then     -- 24-30 us
+      if count <= 1500 and count >= 1200 then     -- 24-30 us
         out_second_comparator <= '1';
       else
         out_second_comparator <= '0';
