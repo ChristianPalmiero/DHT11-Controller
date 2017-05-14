@@ -76,7 +76,7 @@ Remark: when the PE bit is set, we can use the other LED to display the kind of 
     SW0,SW1,SW2  
      1   1   1      1  1  0      1  0  1      1  0  0  |  0   1   1     0  1  0      0  0  1      0  0  0  |  not displayed
    +------------+------------+------------+------------+------------+------------+------------+------------+-----------------+
-   |    1010    |    0110    |    0001    |    0100    |    0010    |    1110    |    0011    |    1100    |     01011001    |  -> 40 bits from the DHT11 sensor 
+   |    1010    |    0110    |    0001    |    0100    |    0010    |    1110    |    0011    |    1100    |     01011001    |  -> 40 bits from the DHT11 sensor
    +------------+------------+------------+------------+------------+------------+------------+------------+-----------------+
                       Humidity data                    |                   Temperature                     |     CHECK SUM
 
@@ -100,7 +100,7 @@ The DHT11 Controller and the DHT11 sensor communicates with a one-bit communicat
 
 ![alt text][top-entity]
 
-[top-entity]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/top_entity.jpg "Top Entity"
+[top-entity]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/top_entity.png "Top Entity"
 
 ```vhdl
 library ieee;
@@ -129,5 +129,3 @@ end architecture rtl;
 
 ## Technical Details
 ### Datapath processes
-
-
