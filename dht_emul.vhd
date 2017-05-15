@@ -138,9 +138,15 @@ STIMULI_GEN: process
                       wait until rising_edge(clk);
                     end loop;
                   end loop;
+                  data_dht_drv <= '0';
                   for i in 1 to 3500 loop
                     wait until rising_edge(clk);
                   end loop;
+                  data_dht_drv <= '1';
+                  for i in 1 to 2500 loop
+                    wait until rising_edge(clk);
+                  end loop;
+
 
 
 --                 for i in 1 to 40 loop

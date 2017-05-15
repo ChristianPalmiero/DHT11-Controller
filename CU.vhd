@@ -4,12 +4,12 @@ USE IEEE.NUMERIC_STD.ALL;
 
 ENTITY CU IS
 PORT (    -- Input
-	  CLK, RST              : IN STD_ULOGIC;
-	  FINAL_COUNTER         : IN STD_ULOGIC;
+	      CLK, RST              : IN STD_ULOGIC;
+	      FINAL_COUNTER         : IN STD_ULOGIC;
           FINAL_CNT             : IN STD_ULOGIC;
           PULSE                 : IN STD_ULOGIC;
           OUT_DEBOUNCER         : IN STD_ULOGIC;
-          OUT_COMPARATOR        : IN STD_ULOGIC(1 DOWNTO 0);
+          OUT_COMPARATOR        : IN STD_ULOGIC_VECTOR(1 DOWNTO 0);
           OUT_SECOND_COMPARATOR : IN STD_ULOGIC;
 	  -- Output
           EN                    : OUT STD_ULOGIC;
@@ -20,7 +20,7 @@ PORT (    -- Input
           INIT_COUNTER          : OUT INTEGER;
           MARGIN                : OUT INTEGER;
           THRESHOLD_COMP        : OUT INTEGER;
-          DATA		        : OUT STD_ULOGIC;
+          DATA		            : OUT STD_ULOGIC;
           DATA_DRV              : OUT STD_ULOGIC
      );
 END ENTITY CU;
@@ -62,47 +62,59 @@ BEGIN
          END IF;
        WHEN CONFIG_COUNT_20 => STATE <= EN_COUNT_20;
        WHEN EN_COUNT_20 =>
-	 IF OUT_COMPARATOR = '1' THEN
+	 IF (OUT_COMPARATOR(0) = '1') THEN
            IF PULSE = '1' THEN
              STATE <= CONFIG_COUNT_80;
            ELSE
-    	     STATE <= PROTOCOL_ERROR_STATE;
+    	     STATE <= EN_COUNT_20;
            END IF;
          ELSE
            IF PULSE = '1' THEN
-            STATE <= PROTOCOL_ERROR_STATE;
+             STATE <= PROTOCOL_ERROR_STATE;
            ELSE
-            STATE <= EN_COUNT_20;
+	     IF (OUT_COMPARATOR(1) = '1') THEN
+	       STATE <= PROTOCOL_ERROR_STATE;
+	     ELSE
+               STATE <= EN_COUNT_20;
+	     END IF;
            END IF;
          END IF;
        WHEN CONFIG_COUNT_80 => STATE <= EN_COUNT_80;
        WHEN EN_COUNT_80 =>
-         IF OUT_COMPARATOR = '1' THEN
-            IF PULSE = '1' THEN
-              STATE <= CONFIG_COUNT_80_2;
-            ELSE
-	      STATE <= PROTOCOL_ERROR_STATE;
-            END IF;
+         IF (OUT_COMPARATOR(0) = '1') THEN
+           IF PULSE = '1' THEN
+             STATE <= CONFIG_COUNT_80_2;
+           ELSE
+             STATE <= EN_COUNT_80;
+           END IF;
          ELSE
            IF PULSE = '1' THEN
              STATE <= PROTOCOL_ERROR_STATE;
            ELSE
-             STATE <= EN_COUNT_80;
+             IF (OUT_COMPARATOR(1) = '1') THEN
+               STATE <= PROTOCOL_ERROR_STATE;
+             ELSE
+               STATE <= EN_COUNT_80;
+             END IF;
            END IF;
          END IF;
        WHEN CONFIG_COUNT_80_2 => STATE <= EN_COUNT_80_2;
        WHEN EN_COUNT_80_2 =>
-         IF OUT_COMPARATOR = '1' THEN
+         IF (OUT_COMPARATOR(0) = '1') THEN
            IF PULSE = '1' THEN
              STATE <= CONFIG_COUNT_50;
            ELSE
-             STATE <= PROTOCOL_ERROR_STATE;
-           END IF;
-         ELSE
-           IF PULSE = '1' THEN
-             STATE <= PROTOCOL_ERROR_STATE;
-           ELSE
              STATE <= EN_COUNT_80_2;
+           END IF;
+          ELSE
+           IF PULSE = '1' THEN
+            STATE <= PROTOCOL_ERROR_STATE;
+           ELSE
+            IF (OUT_COMPARATOR(1) = '1') THEN
+              STATE <= PROTOCOL_ERROR_STATE;
+            ELSE
+              STATE <= EN_COUNT_80_2;
+            END IF;
            END IF;
          END IF;
        WHEN PROTOCOL_ERROR_STATE =>
@@ -113,23 +125,27 @@ BEGIN
          END IF;
        WHEN CONFIG_COUNT_50 => STATE <= EN_COUNT_50;
        WHEN EN_COUNT_50 =>
-         IF OUT_COMPARATOR = '1' THEN
+         IF (OUT_COMPARATOR(0) = '1') THEN
            IF PULSE = '1' THEN
              STATE <= CONFIG_COUNT_26;
            ELSE
- 	     STATE <= PROTOCOL_ERROR_STATE;
-	   END IF;
-         ELSE
-	   IF PULSE = '1' THEN
-	     STATE <= PROTOCOL_ERROR_STATE;
-           ELSE
              STATE <= EN_COUNT_50;
+           END IF;
+          ELSE
+           IF PULSE = '1' THEN
+            STATE <= PROTOCOL_ERROR_STATE;
+           ELSE
+            IF (OUT_COMPARATOR(1) = '1') THEN
+              STATE <= PROTOCOL_ERROR_STATE;
+            ELSE
+              STATE <= EN_COUNT_50;
+            END IF;
            END IF;
          END IF;
        WHEN CONFIG_COUNT_26 => STATE <= EN_COUNT_26;
        WHEN EN_COUNT_26 =>
          IF PULSE = '1' THEN
-           IF OUT_COMPARATOR = '1' THEN
+           IF (OUT_COMPARATOR(1) = '1') THEN
              IF OUT_SECOND_COMPARATOR = '1' THEN
                STATE <= REC_1;
              ELSE
@@ -153,13 +169,13 @@ BEGIN
           IF FINAL_COUNTER = '1' THEN
  	    STATE <= WAIT_FOR_BUTTON;
           ELSE
-	    STATE <= EN_COUNT_26;
+	    STATE <= EN_COUNT_50;  -- if a data has been received wait until a new high state is received
           END IF;
 	WHEN REC_1 =>
           IF FINAL_COUNTER = '1' THEN
             STATE <= WAIT_FOR_BUTTON;
           ELSE
-            STATE <= EN_COUNT_26;
+            STATE <= EN_COUNT_50;
           END IF;
       END CASE;
     END IF;
@@ -195,8 +211,8 @@ BEGIN
     WHEN EN_COUNT_50 => EN <= '1';  BUSY_BIT <= '1';
     WHEN CONFIG_COUNT_26 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 2500; BUSY_BIT <= '1'; MARGIN <= 0; INIT_COUNTER <= 3850;
     WHEN EN_COUNT_26 => EN <= '1';  BUSY_BIT <= '1';
-    WHEN REC_0 => INITIAL_ENABLE <= '1'; INIT_COUNTER <= 3850; BUSY_BIT <= '1'; SHIFT_ENABLE <= '1'; THRESHOLD_COMP <= 2500; MARGIN <= 0;
-    WHEN REC_1 => DATA <= '1'; INITIAL_ENABLE <= '1'; INIT_COUNTER <= 3850; BUSY_BIT <= '1'; SHIFT_ENABLE <= '1'; THRESHOLD_COMP <= 2500; MARGIN <= 0;
+    WHEN REC_0 => INITIAL_ENABLE <= '1'; BUSY_BIT <= '1'; SHIFT_ENABLE <= '1'; THRESHOLD_COMP <= 2500; MARGIN <= 250;
+    WHEN REC_1 => DATA <= '1'; INITIAL_ENABLE <= '1'; BUSY_BIT <= '1'; SHIFT_ENABLE <= '1'; THRESHOLD_COMP <= 2500; MARGIN <= 250;
   END CASE;
 END PROCESS;
 

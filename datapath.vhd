@@ -27,7 +27,7 @@ entity datapath is
        final_count	      :           out   std_ulogic;
        pulse		      :           out   std_ulogic;
        fall_edge	      :           out   std_ulogic;
-       out_comparator         :           out   std_ulogic(1 DOWNTO 0);
+       out_comparator         :           out   std_ulogic_vector(1 DOWNTO 0);
        out_second_comparator  :           out   std_ulogic;
        LEDs                   :           out   std_ulogic_vector(3 DOWNTO 0)
   );
@@ -57,19 +57,24 @@ begin
   variable Q_var:  std_ulogic_vector(39 DOWNTO 0);
   begin
     if(master_clk'event and master_clk = '1') then
-      final_count <= '0';
       if rst = '1' then
       	Q <= (others=>'0');
       	sipo_out_mux_in <= (others=>'0');
       	checksum <= (others=>'0');
       	cnt <= 0;
+        final_count <= '0';
       elsif(shift_enable='1') then
-        if cnt < 39 then
+        final_count <= '0';
+        if cnt < 38 then
           -- Left shift
           Q <= Q(38 downto 0) & data;
           cnt <= cnt + 1;
-        else
+        elsif (cnt = 38) then
+          Q <= Q(38 downto 0) & data;
+          cnt <= cnt + 1;
           final_count <= '1';
+        else
+          final_count <= '0';
           cnt <= 0;
           Q_var := Q(38 downto 0) & data;
           sipo_out_mux_in <= Q_var(39 DOWNTO 8);
@@ -208,13 +213,13 @@ begin
   SECOND_COMPARATOR: process(out_comparator, threshold_comp, margin, count)
   begin
     out_second_comparator <= '0';
-    if out_comparator = '1' then
+    if out_comparator(1) = '1' then  -- if count > 50 see if it falls in 1's range
       if count <= 3650 and count >= 3350 then     -- 67-73 us
         out_second_comparator <= '1';
       else
         out_second_comparator <= '0';
       end if;
-    else
+    else                              -- if count < 50 see if it falls in 0's range
       if count <= 1500 and count >= 1200 then     -- 24-30 us
         out_second_comparator <= '1';
       else
