@@ -27,7 +27,7 @@ entity datapath is
        final_count	      :           out   std_ulogic;
        pulse		      :           out   std_ulogic;
        fall_edge	      :           out   std_ulogic;
-       out_comparator         :           out   std_ulogic;
+       out_comparator         :           out   std_ulogic(1 DOWNTO 0);
        out_second_comparator  :           out   std_ulogic;
        LEDs                   :           out   std_ulogic_vector(3 DOWNTO 0)
   );
@@ -192,16 +192,21 @@ begin
   pulse <= pulse_p and not(pulse_d);
 
   COMPARATOR: process(threshold_comp, margin, count)
-  begin 
+  begin
     if count <= threshold_comp+margin and count >= threshold_comp-margin then
-      out_comparator <= '1';
+      out_comparator(0) <= '1';
     else
-      out_comparator <= '0';
+      out_comparator(0) <= '0';
+      if count > threshold_comp + margin then
+        out_comparator(1) <= '1';   -- over the top margin
+      else
+        out_comparator(1) <= '0';   -- under the bottom margin
+      end if;
     end if;
   end process COMPARATOR;
 
   SECOND_COMPARATOR: process(out_comparator, threshold_comp, margin, count)
-  begin 
+  begin
     out_second_comparator <= '0';
     if out_comparator = '1' then
       if count <= 3650 and count >= 3350 then     -- 67-73 us

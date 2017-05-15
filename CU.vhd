@@ -9,7 +9,7 @@ PORT (    -- Input
           FINAL_CNT             : IN STD_ULOGIC;
           PULSE                 : IN STD_ULOGIC;
           OUT_DEBOUNCER         : IN STD_ULOGIC;
-          OUT_COMPARATOR        : IN STD_ULOGIC;
+          OUT_COMPARATOR        : IN STD_ULOGIC(1 DOWNTO 0);
           OUT_SECOND_COMPARATOR : IN STD_ULOGIC;
 	  -- Output
           EN                    : OUT STD_ULOGIC;
@@ -138,7 +138,7 @@ BEGIN
            ELSE
              IF OUT_SECOND_COMPARATOR = '1' THEN
                STATE <= REC_0;
-             ELSE 
+             ELSE
                STATE <= PROTOCOL_ERROR_STATE;
              END IF;
            END IF;

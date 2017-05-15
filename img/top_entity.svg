@@ -15,7 +15,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="top_entity.svg">
+   sodipodi:docname="top_entity.svg"
+   inkscape:export-filename="/home/mc/DHT11_Controller/img/top_entity.png"
+   inkscape:export-xdpi="86"
+   inkscape:export-ydpi="86">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -26,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.5"
-     inkscape:cx="-23.489145"
+     inkscape:cx="-97.489145"
      inkscape:cy="375.90104"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"

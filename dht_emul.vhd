@@ -85,12 +85,12 @@ STIMULI_GEN: process
                    wait until rising_edge(clk);
                  end loop;
                  BTN <= '1';              -- pressing the button
-                 for i in 1 to 5000000 loop
+                 for i in 1 to 5000000 loop -- wait with the button pressed
                    wait until rising_edge(clk);
                  end loop;
                  BTN <= '0';
                  -- determine if the timing is the right one
-
+                 -- wait for 18ms in which MCU put low the line
                  L1:for i in 1 to 900000 loop
                       int_cnt := int_cnt + 1;
                       wait until rising_edge(clk);
@@ -102,16 +102,19 @@ STIMULI_GEN: process
                     --write error
                   end if;
                   data_dht_drv <= '1';
+                  -- wait for 30us
                   for i in 1 to 1500 loop
                        wait until rising_edge(clk);
                            if data_dht_in /= '1' THEN
                              --write error
                            end if;
                        end loop;
+                  -- put data to 0 and keep for 80 us
                   data_dht_drv <= '0';
                   for i in 1 to 4000 loop
                     wait until rising_edge(clk);
                   end loop;
+                  -- put data to 1 and keep for 80 us
                   data_dht_drv <= '1';
                   for i in 1 to 4000 loop
                     wait until rising_edge(clk);

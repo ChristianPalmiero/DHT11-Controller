@@ -16,7 +16,8 @@ end entity dht11_top;
 
 architecture beh of dht11_top is
   signal data_in, data_drv : std_ulogic;
-  signal pulse, en, init_enable, shift_enable, busy_bit, protocol_error, data, final_cnt, final_count, fall_edge, out_comparator, out_second_comparator : std_ulogic;
+  signal pulse, en, init_enable, shift_enable, busy_bit, protocol_error, data, final_cnt, final_count, fall_edge, out_second_comparator : std_ulogic;
+  signal out_comparator : std_ulogic_vector(1 DOWNTO 0);
   signal init_counter, margin, threshold_comp : integer;
 
 begin
