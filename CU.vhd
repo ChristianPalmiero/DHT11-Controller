@@ -3,9 +3,12 @@ USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 
 ENTITY CU IS
-PORT (    -- Input
-	      CLK, RST              : IN STD_ULOGIC;
-	      FINAL_COUNTER         : IN STD_ULOGIC;
+  generic(
+    freq:    positive range 1 to 1000 -- Clock frequency (MHz)
+  );
+  PORT (  -- Input
+	  CLK, RST              : IN STD_ULOGIC;
+	  FINAL_COUNTER         : IN STD_ULOGIC;
           FINAL_CNT             : IN STD_ULOGIC;
           PULSE                 : IN STD_ULOGIC;
           OUT_DEBOUNCER         : IN STD_ULOGIC;
@@ -20,7 +23,7 @@ PORT (    -- Input
           INIT_COUNTER          : OUT INTEGER;
           MARGIN                : OUT INTEGER;
           THRESHOLD_COMP        : OUT INTEGER;
-          DATA		            : OUT STD_ULOGIC;
+          DATA		        : OUT STD_ULOGIC;
           DATA_DRV              : OUT STD_ULOGIC
      );
 END ENTITY CU;
@@ -177,43 +180,42 @@ BEGIN
           ELSE
             STATE <= EN_COUNT_50;
           END IF;
-      END CASE;
+        END CASE;
+      END IF;
     END IF;
-  END IF;
-END PROCESS;
+  END PROCESS;
 
-cu_Output: PROCESS(State)
-BEGIN
-  EN              <= '0';
-  INITIAL_ENABLE  <= '0';
-  --INIT_COUNTER    <=  0;
-  SHIFT_ENABLE    <= '0';
-  DATA_DRV        <= '0';
-  BUSY_BIT        <= '0';
-  PROTOCOL_ERROR  <= '0';
-  DATA            <= '0';
-  INIT_COUNTER    <=  50000000;
-  CASE State IS
-    WHEN IDLE => NULL ;
-    WHEN CONFIG_COUNT_1S => INITIAL_ENABLE <= '1'; BUSY_BIT <= '1'; INIT_COUNTER <= 50000000;
-    WHEN EN_COUNT_1S => EN <= '1'; BUSY_BIT <= '1';
-    WHEN WAIT_FOR_BUTTON => NULL ;
-    WHEN CONFIG_COUNT_18M => INITIAL_ENABLE <= '1'; INIT_COUNTER <= 900000; DATA_DRV <= '1';
-    WHEN EN_COUNT_18M => EN <= '1'; DATA_DRV <= '1';
-    WHEN CONFIG_COUNT_20 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 1500; MARGIN <= 650;
-    WHEN EN_COUNT_20 => EN <= '1';
-    WHEN PROTOCOL_ERROR_STATE => PROTOCOL_ERROR <= '1';
-    WHEN CONFIG_COUNT_80 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 4000; BUSY_BIT <= '1'; MARGIN <= 400;
-    WHEN EN_COUNT_80 => EN <= '1';  BUSY_BIT <= '1';
-    WHEN CONFIG_COUNT_80_2 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 4000; BUSY_BIT <= '1'; MARGIN <= 400;
-    WHEN EN_COUNT_80_2 => EN <= '1';  BUSY_BIT <= '1';
-    WHEN CONFIG_COUNT_50 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 2500; BUSY_BIT <= '1'; MARGIN <= 250;
-    WHEN EN_COUNT_50 => EN <= '1';  BUSY_BIT <= '1';
-    WHEN CONFIG_COUNT_26 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 2500; BUSY_BIT <= '1'; MARGIN <= 0; INIT_COUNTER <= 3850;
-    WHEN EN_COUNT_26 => EN <= '1';  BUSY_BIT <= '1';
-    WHEN REC_0 => INITIAL_ENABLE <= '1'; BUSY_BIT <= '1'; SHIFT_ENABLE <= '1'; THRESHOLD_COMP <= 2500; MARGIN <= 250;
-    WHEN REC_1 => DATA <= '1'; INITIAL_ENABLE <= '1'; BUSY_BIT <= '1'; SHIFT_ENABLE <= '1'; THRESHOLD_COMP <= 2500; MARGIN <= 250;
-  END CASE;
-END PROCESS;
-
+  cu_Output: PROCESS(State)
+  BEGIN
+    EN              <= '0';
+    INITIAL_ENABLE  <= '0';
+    SHIFT_ENABLE    <= '0';
+    DATA_DRV        <= '0';
+    BUSY_BIT        <= '0';
+    PROTOCOL_ERROR  <= '0';
+    DATA            <= '0';
+    INIT_COUNTER    <=  50000000;
+    CASE State IS
+      WHEN IDLE => NULL ;
+      WHEN CONFIG_COUNT_1S => INITIAL_ENABLE <= '1'; BUSY_BIT <= '1'; INIT_COUNTER <= 1000000*freq;
+      WHEN EN_COUNT_1S => EN <= '1'; BUSY_BIT <= '1';
+      WHEN WAIT_FOR_BUTTON => NULL ;
+      WHEN CONFIG_COUNT_18M => INITIAL_ENABLE <= '1'; INIT_COUNTER <= 18000*freq; DATA_DRV <= '1';
+      WHEN EN_COUNT_18M => EN <= '1'; DATA_DRV <= '1';
+      WHEN CONFIG_COUNT_20 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 30*freq; MARGIN <= 13*freq; BUSY_BIT <= '1';
+      WHEN EN_COUNT_20 => EN <= '1'; BUSY_BIT <= '1';
+      WHEN PROTOCOL_ERROR_STATE => PROTOCOL_ERROR <= '1';
+      WHEN CONFIG_COUNT_80 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 80*freq; BUSY_BIT <= '1'; MARGIN <= 8*freq;
+      WHEN EN_COUNT_80 => EN <= '1';  BUSY_BIT <= '1';
+      WHEN CONFIG_COUNT_80_2 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 80*freq; BUSY_BIT <= '1'; MARGIN <= 8*freq;
+      WHEN EN_COUNT_80_2 => EN <= '1';  BUSY_BIT <= '1';
+      WHEN CONFIG_COUNT_50 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 50*freq; BUSY_BIT <= '1'; MARGIN <= 5*freq;
+      WHEN EN_COUNT_50 => EN <= '1';  BUSY_BIT <= '1';
+      WHEN CONFIG_COUNT_26 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 50*freq; BUSY_BIT <= '1'; MARGIN <= 0; INIT_COUNTER <= 77*freq;
+      WHEN EN_COUNT_26 => EN <= '1';  BUSY_BIT <= '1';
+      WHEN REC_0 => INITIAL_ENABLE <= '1'; BUSY_BIT <= '1'; SHIFT_ENABLE <= '1'; THRESHOLD_COMP <= 50*freq; MARGIN <= 5*freq;
+      WHEN REC_1 => DATA <= '1'; INITIAL_ENABLE <= '1'; BUSY_BIT <= '1'; SHIFT_ENABLE <= '1'; THRESHOLD_COMP <= 50*freq; MARGIN <= 5*freq;
+    END CASE;
+  END PROCESS;
+  
 END ARCHITECTURE BEHAV;
