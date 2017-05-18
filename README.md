@@ -126,6 +126,11 @@ end architecture rtl;
 ```
 
 ### Block diagram  
+#### Datapath
+![alt text][dp]
+
+[dp]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/dp.png "Datapath"
+
 
 ## Technical Details
 ### Datapath processes
