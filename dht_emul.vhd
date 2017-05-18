@@ -18,6 +18,10 @@ use ieee.numeric_std.all;
 use ieee.math_real.all;
 
 entity dht_emul is
+	generic(
+   	freq:    positive range 1 to 1000 := 50 -- Clock frequency (MHz)
+  	); 
+
 end entity dht_emul;
 
 architecture sim of dht_emul is
@@ -28,20 +32,24 @@ architecture sim of dht_emul is
         signal BTN	    : std_ulogic;
         signal LEDs         : std_ulogic_vector(3 DOWNTO 0);
         signal timer        : integer;
-        signal data_dht_drv : std_ulogic;
+        signal data_drv     : std_ulogic;
         signal data_dht_in  : std_ulogic;
 
 
 begin
 
-      dut :  entity work.dht11_top(beh)
-               port map(
-                    data_dht => data_dht,
-                    SW       => SW,
+      dut :  entity work.dht11_sa(rtl)
+               generic map(
+		    freq => freq
+	       )
+	       port map(
+		    clk      => clk,
                     rst	     => rst,
-                    clk      => clk,
                     BTN	     => BTN,
-                    LEDs     => LEDs
+		    SW       => SW,
+                    data_in  => data_dht,
+		    data_drv => data_drv,                    
+                    LED      => LEDs
                );
 
 CLK_GEN:     process
@@ -52,7 +60,7 @@ CLK_GEN:     process
                  wait for 10 ns;
              end process;
 
-data_dht <= '0' when data_dht_drv = '0' else 'H';
+data_dht <= '0' when data_drv = '1' else 'H';
 data_dht_in <= data_dht;
 
 STIMULI_GEN: process
@@ -69,6 +77,7 @@ STIMULI_GEN: process
                  end loop;
                  rst <= '0';
                  BTN <= '0';
+		 Data_dht <= 'Z';
                  SW(0) <= '0';
                  SW(1) <= '0';
                  SW(2) <= '0';
@@ -87,6 +96,9 @@ STIMULI_GEN: process
                  BTN <= '1';              -- pressing the button
                  for i in 1 to 5000000 loop -- wait with the button pressed
                    wait until rising_edge(clk);
+		   if data_dht_in = '0' then
+		     exit;
+		   end if;
                  end loop;
                  BTN <= '0';
                  -- determine if the timing is the right one
@@ -101,7 +113,7 @@ STIMULI_GEN: process
                   if int_cnt /= 899999 THEN
                     --write error
                   end if;
-                  data_dht_drv <= '1';
+                  data_dht <= 'Z';
                   -- wait for 30us
                   for i in 1 to 1500 loop
                        wait until rising_edge(clk);
@@ -110,39 +122,39 @@ STIMULI_GEN: process
                            end if;
                        end loop;
                   -- put data to 0 and keep for 80 us
-                  data_dht_drv <= '0';
+                  data_dht <= '0';
                   for i in 1 to 4000 loop
                     wait until rising_edge(clk);
                   end loop;
                   -- put data to 1 and keep for 80 us
-                  data_dht_drv <= '1';
+                  data_dht <= 'Z';
                   for i in 1 to 4000 loop
                     wait until rising_edge(clk);
                   end loop;
-                  data_dht_drv <= '0';
+                  data_dht <= '0';
                   for j in 1 to 20 loop
-                    data_dht_drv <= '0';
+                    data_dht <= '0';
                     for i in 1 to 2500 loop
                       wait until rising_edge(clk);
                     end loop;
-                    data_dht_drv <= '1';
+                    data_dht <= 'Z';
                     for i in 1 to 1350 loop
                       wait until rising_edge(clk);
                     end loop;
-                    data_dht_drv <= '0';
+                    data_dht <= '0';
                     for i in 1 to 2500 loop
                       wait until rising_edge(clk);
                     end loop;
-                    data_dht_drv <= '1';
+                    data_dht <= 'Z';
                     for i in 1 to 3500 loop
                       wait until rising_edge(clk);
                     end loop;
                   end loop;
-                  data_dht_drv <= '0';
+                  data_dht <= '0';
                   for i in 1 to 3500 loop
                     wait until rising_edge(clk);
                   end loop;
-                  data_dht_drv <= '1';
+                  data_dht <= 'Z';
                   for i in 1 to 2500 loop
                     wait until rising_edge(clk);
                   end loop;
