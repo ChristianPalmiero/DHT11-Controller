@@ -133,7 +133,7 @@ end architecture rtl;
 #### Control Unit
 ![alt text][cu]
 
-[dp]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/fsm.png "Control Unit"
+[cu]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/fsm.png "Control Unit"
 
 
 ## Technical Details
