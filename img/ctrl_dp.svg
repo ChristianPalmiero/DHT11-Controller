@@ -15,7 +15,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="ctrl_dp.svg">
+   sodipodi:docname="ctrl_dp.svg"
+   inkscape:export-filename="/home/mc/DHT11_Controller/img/dp.png"
+   inkscape:export-xdpi="86"
+   inkscape:export-ydpi="86">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="457.97047"
-     inkscape:cy="469.95789"
+     inkscape:zoom="2.0000001"
+     inkscape:cx="105.61783"
+     inkscape:cy="472.33625"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -143,7 +146,7 @@
          sodipodi:role="line"
          x="98.635559"
          y="521.95245"
-         id="tspan4572">   </tspan><tspan
+         id="tspan4572" /><tspan
          sodipodi:role="line"
          x="98.635559"
          y="572.43951"
@@ -295,10 +298,14 @@
          sodipodi:role="line"
          id="tspan4687"
          x="-50.357143"
-         y="549.00507">D_IN</tspan><tspan
+         y="549.00507">DATA</tspan><tspan
          sodipodi:role="line"
          x="-50.357143"
          y="564.63007"
+         id="tspan3505" /><tspan
+         sodipodi:role="line"
+         x="-50.357143"
+         y="580.25507"
          id="tspan4689" /></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
