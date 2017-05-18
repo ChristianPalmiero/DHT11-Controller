@@ -130,6 +130,10 @@ end architecture rtl;
 ![alt text][dp]
 
 [dp]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/dp.png "Datapath"
+#### Control Unit
+![alt text][cu]
+
+[dp]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/fsm.png "Control Unit"
 
 
 ## Technical Details
