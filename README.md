@@ -8,7 +8,7 @@ This project consist of a complete digital hardware design of a controller for t
 * Synthesis for the [Zybo board](zybo_rm.pdf), performance evaluation and optimization
 
 ## Authors
-* Christian Palmiero
+* [Christian Palmiero](https://github.com/ChristianPalmiero)
 * Francesco Condemi
 * Marco Coletta
 
@@ -155,5 +155,19 @@ The datapath has been designed at RT-level according to a behavioral view. It co
 ## Functional Validation
 
 ## Synthesis
+
+The design has been synthesised with the Vivado tool provided by Xilinx and mapped in the programmable logic part of the Zynq core of the Zybo. 
+The dht11_sa-syn.tcl TCL script automates the synthesis and the boot.bif file tells the Xilinx tools what to do with the synthesis result. 
+
+The primary clock "clk" comes from the 50 MHz Zynq oscillator, whose name on the Zybo reference manual is PS_CLK.
+The "rst" synchronous active high reset comes from ???, the "btn" button is the rightmost press-button (BTN0) of the Zybo board. 
+The four "sw" signals are mapped to the Zybo board four slide switches.
+The four "led" output signals are sent to the 4 LEDs of the Zybo board. 
+Finally, the "data_in" and the "data_drv" lines ???.
+
+The synthesis result are in $p/top.runs/impl_1/top_wrapper.bit. It is a binary file that is used by the Zynq core to configure the programmable logic. 
+The result is a boot image: boot.bin. 
+Two important reports have also been produced: the resources usage report ($p/top.runs/impl_1/top_wrapper_utilization_placed.rpt);
+the timing report ($p/top.runs/impl_1/top_wrapper_timing_summary_routed.rpt).
 
 ## Experiments on the Zybo
