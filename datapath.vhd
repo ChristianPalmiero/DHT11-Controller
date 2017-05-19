@@ -120,9 +120,9 @@ begin
     else
       out_comparator(0) <= '0';
       if count > threshold_comp + margin then
-        out_comparator(1) <= '1';   -- over the top margin
+        out_comparator(1) <= '1';   -- above the top margin
       else
-        out_comparator(1) <= '0';   -- under the bottom margin
+        out_comparator(1) <= '0';   -- below the bottom margin
       end if;
     end if;
   end process COMPARATOR;
