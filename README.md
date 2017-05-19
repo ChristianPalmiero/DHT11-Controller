@@ -151,3 +151,9 @@ The datapath has been designed at RT-level according to a behavioral view. It co
 ![alt text][cu]
 
 [cu]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/fsm.png "Control Unit"
+
+## Functional Validation
+
+## Synthesis
+
+## Experiments on the Zybo

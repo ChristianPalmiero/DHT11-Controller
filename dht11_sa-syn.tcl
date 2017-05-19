@@ -44,7 +44,7 @@ set_property ip_repo_paths { ./dht11_sa } [current_fileset]
 update_ip_catalog
 create_bd_design "$top"
 set ps7 [create_bd_cell -type ip -vlnv [get_ipdefs *xilinx.com:ip:processing_system7:*] ps7]
-set dht11_sa [create_bd_cell -type ip -vlnv [get_ipdefs *www.telecom-paristech.fr:LB:lb:*] dht11_sa]
+set dht11_sa [create_bd_cell -type ip -vlnv [get_ipdefs *www.telecom-paristech.fr:DHT11_SA:dht11_sa:*] dht11_sa]
 apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 -config {make_external "FIXED_IO, DDR" apply_board_preset "1" Master "Disable" Slave "Disable" } $ps7
 set_property -dict [list CONFIG.PCW_USE_M_AXI_GP0 {0}] $ps7
 set_property -dict [list CONFIG.freq $frequency] $dht11_sa
@@ -55,6 +55,8 @@ create_bd_port -dir I -type clk clk
 connect_bd_net [get_bd_pins /dht11_sa/clk] [get_bd_ports clk]
 create_bd_port -dir I -type rst rst
 connect_bd_net [get_bd_pins /dht11_sa/rst] [get_bd_ports rst]
+create_bd_port -dir I -type data btn
+connect_bd_net [get_bd_pins /dht11_sa/btn] [get_bd_ports btn]
 create_bd_port -dir I -type data -from 3 -to 0 sw
 connect_bd_net [get_bd_pins /dht11_sa/sw] [get_bd_ports sw]
 create_bd_port -dir I -type data data_in
