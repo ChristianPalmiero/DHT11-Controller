@@ -157,16 +157,16 @@ The datapath has been designed at RT-level according to a behavioral view. It co
 ## Synthesis
 
 The design has been synthesised with the Vivado tool provided by Xilinx and mapped in the programmable logic part of the Zynq core of the Zybo. 
-The dht11_sa-syn.tcl TCL script automates the synthesis and the boot.bif file tells the Xilinx tools what to do with the synthesis result. 
+The [dht11_sa-syn.tcl](https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/dht11_sa-syn.tcl) TCL script automates the synthesis.
 
-The primary clock "clk" comes from the 50 MHz Zynq oscillator, whose name on the Zybo reference manual is PS_CLK.
-The "rst" synchronous active high reset comes from ???, the "btn" button is the rightmost press-button (BTN0) of the Zybo board. 
-The four "sw" signals are mapped to the Zybo board four slide switches.
+The primary clock "clk" comes from the 50 MHz Zynq oscillator (PS_CLK).
+The synchronous active high reset "rst" comes from ???, the button "btn" is the rightmost press-button (BTN0) of the Zybo board. 
+The four "sw" input signals are mapped to the Zybo board four slide switches.
 The four "led" output signals are sent to the 4 LEDs of the Zybo board. 
 Finally, the "data_in" and the "data_drv" lines ???.
 
-The synthesis result are in $p/top.runs/impl_1/top_wrapper.bit. It is a binary file that is used by the Zynq core to configure the programmable logic. 
-The result is a boot image: boot.bin. 
+The synthesis result are in $p/top.runs/impl_1/top_wrapper.bit, a binary file that is used by the Zynq core to configure the programmable logic. 
+The result is a boot image: boot.bin.
 Two important reports have also been produced: the resources usage report ($p/top.runs/impl_1/top_wrapper_utilization_placed.rpt);
 the timing report ($p/top.runs/impl_1/top_wrapper_timing_summary_routed.rpt).
 
