@@ -165,7 +165,7 @@ The four "sw" input signals are mapped to the Zybo board four slide switches.
 The four "led" output signals are sent to the 4 LEDs of the Zybo board. 
 Finally, the "data" inout line is mapped to the pin JE1 of the Pmod connector J.
 
-   | Name   |  Pin | Level    !
+   | Name   |  Pin | Level    |
    |:------:|:----:|:--------:|
    | clk    |  E7  | LVCMOS33 |
    | rst    |  P16 | LVCMOS33 |
