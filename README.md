@@ -160,10 +160,10 @@ The design has been synthesised with the Vivado tool provided by Xilinx and mapp
 The [dht11_sa-syn.tcl](https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/dht11_sa-syn.tcl) TCL script automates the synthesis.
 
 The primary clock "clk" comes from the 50 MHz Zynq oscillator (PS_CLK).
-The synchronous active high reset "rst" comes from ???, the button "btn" is the rightmost press-button (BTN0) of the Zybo board. 
+The synchronous active high reset "rst" comes from the press-button BTN0 of the Zybo board, the button "btn" is the press-button BTN0. 
 The four "sw" input signals are mapped to the Zybo board four slide switches.
 The four "led" output signals are sent to the 4 LEDs of the Zybo board. 
-Finally, the "data_in" and the "data_drv" lines ???.
+Finally, the "data" inout line is mapped to the pin JE1 of the Pmod connector J.
 
 The synthesis result are in $p/top.runs/impl_1/top_wrapper.bit, a binary file that is used by the Zynq core to configure the programmable logic. 
 The result is a boot image: boot.bin.

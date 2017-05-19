@@ -3,14 +3,13 @@ set board "digilentinc.com:zybo:part0:1.0"
 set frequency 50
 array set ios {
   "clk"           { "E7" "LVCMOS33" }
-  "rst"           { "" "LVCMOS33" }
+  "rst"           { "P16" "LVCMOS33" }
   "btn"           { "R18" "LVCMOS33" }
-  "sw[3]"         { "G15" "LVCMOS33" }
-  "sw[2]"         { "P15" "LVCMOS33" }
-  "sw[1]"         { "W13" "LVCMOS33" }
-  "sw[0]"         { "T16" "LVCMOS33" }
-  "data_in"       { "" "LVCMOS33" }
-  "data_drv"      { "" "LVCMOS33" }
+  "sw[0]"         { "G15" "LVCMOS33" }
+  "sw[1]"         { "P15" "LVCMOS33" }
+  "sw[2]"         { "W13" "LVCMOS33" }
+  "sw[3]"         { "T16" "LVCMOS33" }
+  "data"          { "JE1" "LVCMOS33" }
   "led[0]"        { "M14" "LVCMOS33" }
   "led[1]"        { "M15" "LVCMOS33" }
   "led[2]"        { "G14" "LVCMOS33" }
@@ -28,10 +27,10 @@ puts "*********************************************"
 #####################
 # Create DHT11 project #
 #####################
-create_project -part $part -force dht11_sa dht11_sa
-add_files datapath.vhd debouncer.vhd CU.vhd dht11_ctrl.vhd dht11_sa.vhd
+create_project -part $part -force dht11_sa_top dht11_sa_top
+add_files datapath.vhd debouncer.vhd CU.vhd dht11_ctrl.vhd dht11_sa.vhd dht11_sa_top.vhd
 import_files -force -norecurse
-ipx::package_project -root_dir dht11_sa -vendor www.telecom-paristech.fr -library DHT11_SA -force dht11_sa
+ipx::package_project -root_dir dht11_sa_top -vendor www.telecom-paristech.fr -library DHT11_SA_TOP -force dht11_sa_top
 close_project
 
 ############################
@@ -40,31 +39,29 @@ close_project
 set top top
 create_project -part $part -force $top .
 set_property board_part $board [current_project]
-set_property ip_repo_paths { ./dht11_sa } [current_fileset]
+set_property ip_repo_paths { ./dht11_sa_top } [current_fileset]
 update_ip_catalog
 create_bd_design "$top"
 set ps7 [create_bd_cell -type ip -vlnv [get_ipdefs *xilinx.com:ip:processing_system7:*] ps7]
-set dht11_sa [create_bd_cell -type ip -vlnv [get_ipdefs *www.telecom-paristech.fr:DHT11_SA:dht11_sa:*] dht11_sa]
+set dht11_sa_top [create_bd_cell -type ip -vlnv [get_ipdefs *www.telecom-paristech.fr:DHT11_SA_TOP:dht11_sa_top:*] dht11_sa_top]
 apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 -config {make_external "FIXED_IO, DDR" apply_board_preset "1" Master "Disable" Slave "Disable" } $ps7
 set_property -dict [list CONFIG.PCW_USE_M_AXI_GP0 {0}] $ps7
-set_property -dict [list CONFIG.freq $frequency] $dht11_sa
+set_property -dict [list CONFIG.freq $frequency] $dht11_sa_top
 
 # Interconnections
 # Primary IOs
 create_bd_port -dir I -type clk clk
-connect_bd_net [get_bd_pins /dht11_sa/clk] [get_bd_ports clk]
+connect_bd_net [get_bd_pins /dht11_sa_top/clk] [get_bd_ports clk]
 create_bd_port -dir I -type rst rst
-connect_bd_net [get_bd_pins /dht11_sa/rst] [get_bd_ports rst]
+connect_bd_net [get_bd_pins /dht11_sa_top/rst] [get_bd_ports rst]
 create_bd_port -dir I -type data btn
-connect_bd_net [get_bd_pins /dht11_sa/btn] [get_bd_ports btn]
+connect_bd_net [get_bd_pins /dht11_sa_top/btn] [get_bd_ports btn]
 create_bd_port -dir I -type data -from 3 -to 0 sw
-connect_bd_net [get_bd_pins /dht11_sa/sw] [get_bd_ports sw]
-create_bd_port -dir I -type data data_in
-connect_bd_net [get_bd_pins /dht11_sa/data_in] [get_bd_ports data_in]
-create_bd_port -dir O -type data data_drv
-connect_bd_net [get_bd_pins /dht11_sa/data_drv] [get_bd_ports data_drv]
+connect_bd_net [get_bd_pins /dht11_sa_top/sw] [get_bd_ports sw]
+create_bd_port -dir IO -type data data
+connect_bd_net [get_bd_pins /dht11_sa_top/data] [get_bd_ports data]
 create_bd_port -dir O -type data -from 3 -to 0 led
-connect_bd_net [get_bd_pins /dht11_sa/led] [get_bd_ports led]
+connect_bd_net [get_bd_pins /dht11_sa_top/led] [get_bd_ports led]
 
 # Synthesis flow
 validate_bd_design
