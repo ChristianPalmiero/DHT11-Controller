@@ -165,7 +165,8 @@ The four "sw" input signals are mapped to the Zybo board four slide switches.
 The four "led" output signals are sent to the 4 LEDs of the Zybo board. 
 Finally, the "data" inout line is mapped to the pin JE1 of the Pmod connector J.
 
-   +--------+------+----------+
+   | Name   |  Pin | Level    !
+   |:------:|:----:|:--------:|
    | clk    |  E7  | LVCMOS33 |
    | rst    |  P16 | LVCMOS33 |
    | btn    |  R18 | LVCMOS33 |
@@ -178,7 +179,6 @@ Finally, the "data" inout line is mapped to the pin JE1 of the Pmod connector J.
    | led[1] |  M15 | LVCMOS33 |
    | led[2] |  G14 | LVCMOS33 |
    | led[3] |  D18 | LVCMOS33 |
-   +--------+------+----------+
 
 The synthesis result are in $p/top.runs/impl_1/top_wrapper.bit, a binary file that is used by the Zynq core to configure the programmable logic. 
 The result is a boot image: boot.bin.
