@@ -85,8 +85,8 @@ foreach io [ array names ios ] {
 
 # Clocks and timing
 create_clock -name clk -period [expr 1000.0 / $frequency] [get_ports clk]
-#set_false_path -from clk -to [get_ports led[*]]
-#set_false_path -from [get_ports areset] -to clk
+set_false_path -from clk -to [get_ports led[*]]
+set_false_path -from [get_ports rst] -to clk
 
 # Implementation
 save_constraints

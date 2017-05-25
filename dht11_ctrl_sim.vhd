@@ -422,11 +422,11 @@ use work.dht11_sim_pkg.all;
 entity dht11_ctrl_sim is
 	generic(
 -- Set to true to abort when a protocol error is detected
-		abort_on_protocol_errors: boolean;
+		abort_on_protocol_errors: boolean:= TRUE;
 -- extra margin for reset-to-start delay and protocol error detection
-		margin:  real;
+		margin:  real:= 0.1;
 -- Clock frequency (MHz)
-		freq:    positive range 1 to 1000
+		freq:    positive range 1 to 1000:= 1
 	);
 end entity dht11_ctrl_sim;
 

@@ -7,7 +7,7 @@ entity dht11_ctrl is
   );
   port(
     clk      :       in  std_ulogic;
-    rst      :       in  std_ulogic;
+    srstn    :       in  std_ulogic;
     start    :       in  std_ulogic;
     data_in  :       in  std_ulogic;
     data_drv :       out std_ulogic;
@@ -19,11 +19,12 @@ end entity dht11_ctrl;
 
 architecture rtl of dht11_ctrl is
 
-  signal pulse, en, init_enable, shift_enable, data, final_cnt, final_count, out_second_comparator : std_ulogic;
+  signal rst, pulse, en, init_enable, shift_enable, data, final_cnt, final_count, out_second_comparator : std_ulogic;
   signal out_comparator : std_ulogic_vector(1 DOWNTO 0);	
   signal init_counter, margin, threshold_comp : integer;
-
+	
 begin
+  rst <= NOT(srstn);
 
   dp: entity work.datapath(beh)
   generic map(

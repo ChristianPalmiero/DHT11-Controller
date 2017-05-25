@@ -47,7 +47,7 @@ begin
   )
   port map(
     clk      => clk,
-    rst      => rst,
+    srstn    => NOT(rst),
     start    => start,
     data_in  => data_in,
     data_drv => data_drv,

@@ -47,6 +47,7 @@ begin
       	Q <= (others=>'0');
       	cnt <= 0;
         final_count <= '0';
+	do <= (others=>'0');
       elsif(shift_enable='1') then
         final_count <= '0';
         if cnt < 38 then
