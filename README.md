@@ -182,9 +182,9 @@ Finally, the "data" inout line is mapped to the pin JE1 of the Pmod connector J.
    | led[3] |  D18 | LVCMOS33 |
 
 </center>
-The synthesis result are in $p/top.runs/impl_1/top_wrapper.bit, a binary file that is used by the Zynq core to configure the programmable logic. 
-The result is a boot image: boot.bin.
-Two important reports have also been produced: the resources usage report ($p/top.runs/impl_1/top_wrapper_utilization_placed.rpt);
-the timing report ($p/top.runs/impl_1/top_wrapper_timing_summary_routed.rpt).
+The synthesis result are in syn/top_wrapper.bit, a binary file that is used by the Zynq core to configure the programmable logic. 
+The result is a boot image: syn/boot.bin.
+Two important reports have also been produced: the resources usage report (syn/top_wrapper_utilization_placed.rpt);
+the timing report (syn/top_wrapper_timing_summary_routed.rpt).
 
 ## Experiments on the Zybo
