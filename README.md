@@ -160,7 +160,7 @@ The design has been synthesised with the Vivado tool provided by Xilinx and mapp
 The [dht11_sa_top-syn.tcl](https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/dht11_sa_top-syn.tcl) TCL script automates the synthesis.
 
 The primary clock "clk" comes from the 125 MHz Zynq reference clock.
-The synchronous active high reset "rst" comes from the press-button BTN0 of the Zybo board, the button "btn" is the press-button BTN0. 
+The synchronous active high reset "rst" comes from the press-button BTN1 of the Zybo board, the button "btn" is the press-button BTN0. 
 The four "sw" input signals are mapped to the Zybo board four slide switches.
 The four "led" output signals are sent to the 4 LEDs of the Zybo board. 
 Finally, the "data" inout line is mapped to the pin JE1 of the Pmod connector J.
