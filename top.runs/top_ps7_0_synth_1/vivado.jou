@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.3 (64-bit)
+# SW Build 1682563 on Mon Oct 10 19:07:26 MDT 2016
+# IP Build 1681267 on Mon Oct 10 21:28:31 MDT 2016
+# Start of session at: Thu May 25 16:32:21 2017
+# Process ID: 23435
+# Current directory: /homes/palmiero/Desktop/DHT11_Controller/top.runs/top_ps7_0_synth_1
+# Command line: vivado -log top_ps7_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_ps7_0.tcl
+# Log file: /homes/palmiero/Desktop/DHT11_Controller/top.runs/top_ps7_0_synth_1/top_ps7_0.vds
+# Journal file: /homes/palmiero/Desktop/DHT11_Controller/top.runs/top_ps7_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source top_ps7_0.tcl -notrace

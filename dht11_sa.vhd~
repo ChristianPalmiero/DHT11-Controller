@@ -24,7 +24,7 @@ architecture rtl of dht11_sa is
   signal b		   : std_ulogic;
   signal do                : std_ulogic_vector(39 downto 0);
   signal sipo_out_mux_in   : std_ulogic_vector(31 downto 0);
-  signal checksum, sum_int : std_ulogic_vector(7 downto 0);
+  signal checksum          : std_ulogic_vector(7 downto 0);
   signal checksum_ver_to_B : std_ulogic_vector(3 downto 0);
   signal nib_sel_to_A      : std_ulogic_vector(3 downto 0);
 

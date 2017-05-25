@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Webtalk v2016.3 (64-bit)
+# SW Build 1682563 on Mon Oct 10 19:07:26 MDT 2016
+# IP Build 1681267 on Mon Oct 10 21:28:31 MDT 2016
+# Start of session at: Thu May 25 16:31:53 2017
+# Process ID: 23330
+# Current directory: /homes/palmiero/Desktop/DHT11_Controller
+# Command line: wbtcv -mode batch -source /homes/palmiero/Desktop/DHT11_Controller/dht11_sa_top/dht11_sa_top.hw/webtalk/labtool_webtalk.tcl -notrace
+# Log file: /homes/palmiero/Desktop/DHT11_Controller/webtalk.log
+# Journal file: /homes/palmiero/Desktop/DHT11_Controller/webtalk.jou
+#-----------------------------------------------------------
+source /homes/palmiero/Desktop/DHT11_Controller/dht11_sa_top/dht11_sa_top.hw/webtalk/labtool_webtalk.tcl -notrace
+INFO: [Common 17-186] '/homes/palmiero/Desktop/DHT11_Controller/dht11_sa_top/dht11_sa_top.hw/webtalk/usage_statistics_ext_labtool.xml' has been successfully sent to Xilinx on Thu May 25 16:31:54 2017. For additional details about this file, please refer to the WebTalk help file at /packages/LabSoC/Xilinx/Vivado/2016.3/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Thu May 25 16:31:54 2017...

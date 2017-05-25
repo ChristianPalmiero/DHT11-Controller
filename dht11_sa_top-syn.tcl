@@ -1,15 +1,15 @@
 set part "xc7z010clg400-1"
 set board "digilentinc.com:zybo:part0:1.0"
-set frequency 50
+set frequency 125
 array set ios {
-  "clk"           { "E7" "LVCMOS33" }
+  "clk"           { "L16" "LVCMOS33" }
   "rst"           { "P16" "LVCMOS33" }
   "btn"           { "R18" "LVCMOS33" }
   "sw[0]"         { "G15" "LVCMOS33" }
   "sw[1]"         { "P15" "LVCMOS33" }
   "sw[2]"         { "W13" "LVCMOS33" }
   "sw[3]"         { "T16" "LVCMOS33" }
-  "data"          { "JE1" "LVCMOS33" }
+  "data"          { "V12" "LVCMOS33" }
   "led[0]"        { "M14" "LVCMOS33" }
   "led[1]"        { "M15" "LVCMOS33" }
   "led[2]"        { "G14" "LVCMOS33" }
