@@ -26,6 +26,7 @@ architecture rtl of dht11_ctrl is
 begin
 
   rst <= NOT(srstn);
+  data_drv <= data_drv_int;
 
   dp: entity work.datapath(beh)
   generic map(
