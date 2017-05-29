@@ -117,14 +117,16 @@ begin
 
   COMPARATOR: process(threshold_comp, margin, count)
   begin
-    if count <= threshold_comp+margin and count >= threshold_comp-margin then
-      out_comparator_local(0) <= '1';
-    else
-      out_comparator_local(0) <= '0';
-      if count > threshold_comp + margin then
-        out_comparator_local(1) <= '1';   -- above the top margin
+    if threshold_comp /= 0 then
+      if count <= threshold_comp+margin and count >= threshold_comp-margin then
+        out_comparator_local(0) <= '1';
       else
-        out_comparator_local(1) <= '0';   -- below the bottom margin
+        out_comparator_local(0) <= '0';
+        if count > threshold_comp + margin then
+          out_comparator_local(1) <= '1';   -- above the top margin
+        else
+          out_comparator_local(1) <= '0';   -- below the bottom margin
+        end if;
       end if;
     end if;
   end process COMPARATOR;

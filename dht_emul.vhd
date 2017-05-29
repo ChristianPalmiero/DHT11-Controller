@@ -19,12 +19,13 @@ use ieee.math_real.all;
 
 entity dht_emul is
 	generic(
-   	freq:    positive range 1 to 1000 := 50 -- Clock frequency (MHz)
+         	freq:    positive range 1 to 1000 := 125 -- Clock frequency (MHz)
   	); 
 
 end entity dht_emul;
 
 architecture sim of dht_emul is
+ 
         signal data_dht     : std_logic;
         signal SW           : std_ulogic_vector(3 DOWNTO 0);
         signal rst	    : std_ulogic;
@@ -34,7 +35,6 @@ architecture sim of dht_emul is
         signal timer        : integer;
         signal data_drv     : std_ulogic;
         signal data_dht_in  : std_ulogic;
-
 
 begin
 
@@ -55,9 +55,9 @@ begin
 CLK_GEN:     process
              begin
                  clk <= '0';
-                 wait for 10 ns;
+                 wait for 4 ns;
                  clk <= '1';
-                 wait for 10 ns;
+                 wait for 4 ns;
              end process;
 
 data_dht <= '0' when data_drv = '1' else 'H';
@@ -90,11 +90,11 @@ STIMULI_GEN: process
                    wait until rising_edge(clk);
                  end loop;
                  BTN <= '0';
-                 for i in 1 to 49999994 loop -- wait for 1 s
+                 for i in 1 to 124999994 loop -- wait for 1 s
                    wait until rising_edge(clk);
                  end loop;
                  BTN <= '1';              -- pressing the button
-                 for i in 1 to 5000000 loop -- wait with the button pressed
+                 for i in 1 to 25000000 loop -- wait with the button pressed for 0.2 s
                    wait until rising_edge(clk);
 		   if data_dht_in = '0' then
 		     exit;
@@ -102,20 +102,20 @@ STIMULI_GEN: process
                  end loop;
                  BTN <= '0';
                  -- determine if the timing is the right one
-                 -- wait for 18ms in which MCU put low the line
-                 L1:for i in 1 to 900000 loop
+                 -- wait for 20ms in which MCU put low the line
+                 L1:for i in 1 to 2500000 loop
                       int_cnt := int_cnt + 1;
                       wait until rising_edge(clk);
                           if data_dht_in = '1' THEN
                             exit L1;
                           end if;
                       end loop L1;
-                  if int_cnt /= 899999 THEN
+                  if int_cnt /= 2249999 THEN
                     --write error
                   end if;
                   data_dht <= 'Z';
                   -- wait for 30us
-                  for i in 1 to 1500 loop
+                  for i in 1 to 3750 loop
                        wait until rising_edge(clk);
                            if data_dht_in /= '1' THEN
                              --write error
@@ -123,43 +123,41 @@ STIMULI_GEN: process
                        end loop;
                   -- put data to 0 and keep for 80 us
                   data_dht <= '0';
-                  for i in 1 to 4000 loop
+                  for i in 1 to 10000 loop
                     wait until rising_edge(clk);
                   end loop;
                   -- put data to 1 and keep for 80 us
                   data_dht <= 'Z';
-                  for i in 1 to 4000 loop
+                  for i in 1 to 10000 loop
                     wait until rising_edge(clk);
                   end loop;
                   data_dht <= '0';
                   for j in 1 to 20 loop
                     data_dht <= '0';
-                    for i in 1 to 2500 loop
+                    for i in 1 to 6250 loop
                       wait until rising_edge(clk);
                     end loop;
                     data_dht <= 'Z';
-                    for i in 1 to 1350 loop
+                    for i in 1 to 3375 loop
                       wait until rising_edge(clk);
                     end loop;
                     data_dht <= '0';
-                    for i in 1 to 2500 loop
+                    for i in 1 to 6250 loop
                       wait until rising_edge(clk);
                     end loop;
                     data_dht <= 'Z';
-                    for i in 1 to 3500 loop
+                    for i in 1 to 8750 loop
                       wait until rising_edge(clk);
                     end loop;
                   end loop;
                   data_dht <= '0';
-                  for i in 1 to 3500 loop
+                  for i in 1 to 8750 loop
                     wait until rising_edge(clk);
                   end loop;
                   data_dht <= 'Z';
-                  for i in 1 to 2500 loop
+                  for i in 1 to 6250 loop
                     wait until rising_edge(clk);
                   end loop;
-
-
 
 --                 for i in 1 to 40 loop
 --                    uniform(seed1, seed2, rnd_number);
