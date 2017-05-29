@@ -31,161 +31,167 @@ END ENTITY CU;
 ARCHITECTURE BEHAV OF CU IS
 
   TYPE StateType IS (IDLE,PROTOCOL_ERROR_STATE,CONFIG_COUNT_1S,EN_COUNT_1S,WAIT_FOR_BUTTON,CONFIG_COUNT_18M,EN_COUNT_18M,CONFIG_COUNT_20,EN_COUNT_20,CONFIG_COUNT_80,EN_COUNT_80,CONFIG_COUNT_80_2,EN_COUNT_80_2,CONFIG_COUNT_50,EN_COUNT_50,CONFIG_COUNT_26,EN_COUNT_26,REC_0,REC_1);
-  SIGNAL STATE: StateType;
+  SIGNAL CURR_STATE, NEXT_STATE: StateType;
 
 BEGIN
 
   Transition: PROCESS(CLK)
   BEGIN
-  IF (CLK 'EVENT AND CLK = '1') THEN
-   IF RST= '1' THEN
-     STATE <= IDLE;
-   ELSE
-     CASE STATE IS
-       WHEN IDLE => STATE <= CONFIG_COUNT_1S;
-       WHEN CONFIG_COUNT_1S => STATE <= EN_COUNT_1S;
+    IF (CLK 'EVENT AND CLK = '1') THEN
+      IF RST= '1' THEN
+        CURR_STATE <= IDLE;
+      ELSE
+        CURR_STATE <= NEXT_STATE;
+      END IF;
+    END IF;
+  END PROCESS Transition;
+
+  P_Next_State: PROCESS(CURR_STATE, FINAL_COUNTER, FINAL_CNT, PULSE, OUT_DEBOUNCER, OUT_COMPARATOR, OUT_SECOND_COMPARATOR)
+  BEGIN
+    NEXT_STATE<=CURR_STATE;
+    CASE CURR_STATE IS
+       WHEN IDLE => NEXT_STATE <= CONFIG_COUNT_1S;
+       WHEN CONFIG_COUNT_1S => NEXT_STATE <= EN_COUNT_1S;
        WHEN EN_COUNT_1S =>
          IF FINAL_CNT = '1' THEN
-           STATE <= WAIT_FOR_BUTTON;
+           NEXT_STATE <= WAIT_FOR_BUTTON;
          ELSE
-           STATE <= EN_COUNT_1S;
+           NEXT_STATE <= EN_COUNT_1S;
          END IF;
        WHEN WAIT_FOR_BUTTON =>
          IF OUT_DEBOUNCER = '1' THEN
-           STATE <= CONFIG_COUNT_18M;
+           NEXT_STATE <= CONFIG_COUNT_18M;
          ELSE
-           STATE <= WAIT_FOR_BUTTON;
+           NEXT_STATE <= WAIT_FOR_BUTTON;
          END IF;
-       WHEN CONFIG_COUNT_18M => STATE <= EN_COUNT_18M;
+       WHEN CONFIG_COUNT_18M => NEXT_STATE <= EN_COUNT_18M;
        WHEN EN_COUNT_18M =>
          IF FINAL_CNT = '1' THEN
-	   STATE <= CONFIG_COUNT_20;
+	   NEXT_STATE <= CONFIG_COUNT_20;
 	 ELSE
-	   STATE <= EN_COUNT_18M;
+	   NEXT_STATE <= EN_COUNT_18M;
          END IF;
-       WHEN CONFIG_COUNT_20 => STATE <= EN_COUNT_20;
+       WHEN CONFIG_COUNT_20 => NEXT_STATE <= EN_COUNT_20;
        WHEN EN_COUNT_20 =>
 	 IF (OUT_COMPARATOR(0) = '1') THEN
            IF PULSE = '1' THEN
-             STATE <= CONFIG_COUNT_80;
+             NEXT_STATE <= CONFIG_COUNT_80;
            ELSE
-    	     STATE <= EN_COUNT_20;
+    	     NEXT_STATE <= EN_COUNT_20;
            END IF;
          ELSE
            IF PULSE = '1' THEN
-             STATE <= PROTOCOL_ERROR_STATE;
+             NEXT_STATE <= PROTOCOL_ERROR_STATE;
            ELSE
 	     IF (OUT_COMPARATOR(1) = '1') THEN
-	       STATE <= PROTOCOL_ERROR_STATE;
+	       NEXT_STATE <= PROTOCOL_ERROR_STATE;
 	     ELSE
-               STATE <= EN_COUNT_20;
+               NEXT_STATE <= EN_COUNT_20;
 	     END IF;
            END IF;
          END IF;
-       WHEN CONFIG_COUNT_80 => STATE <= EN_COUNT_80;
+       WHEN CONFIG_COUNT_80 => NEXT_STATE <= EN_COUNT_80;
        WHEN EN_COUNT_80 =>
          IF (OUT_COMPARATOR(0) = '1') THEN
            IF PULSE = '1' THEN
-             STATE <= CONFIG_COUNT_80_2;
+             NEXT_STATE <= CONFIG_COUNT_80_2;
            ELSE
-             STATE <= EN_COUNT_80;
+             NEXT_STATE <= EN_COUNT_80;
            END IF;
          ELSE
            IF PULSE = '1' THEN
-             STATE <= PROTOCOL_ERROR_STATE;
+             NEXT_STATE <= PROTOCOL_ERROR_STATE;
            ELSE
              IF (OUT_COMPARATOR(1) = '1') THEN
-               STATE <= PROTOCOL_ERROR_STATE;
+               NEXT_STATE <= PROTOCOL_ERROR_STATE;
              ELSE
-               STATE <= EN_COUNT_80;
+               NEXT_STATE <= EN_COUNT_80;
              END IF;
            END IF;
          END IF;
-       WHEN CONFIG_COUNT_80_2 => STATE <= EN_COUNT_80_2;
+       WHEN CONFIG_COUNT_80_2 => NEXT_STATE <= EN_COUNT_80_2;
        WHEN EN_COUNT_80_2 =>
          IF (OUT_COMPARATOR(0) = '1') THEN
            IF PULSE = '1' THEN
-             STATE <= CONFIG_COUNT_50;
+             NEXT_STATE <= CONFIG_COUNT_50;
            ELSE
-             STATE <= EN_COUNT_80_2;
+             NEXT_STATE <= EN_COUNT_80_2;
            END IF;
           ELSE
            IF PULSE = '1' THEN
-            STATE <= PROTOCOL_ERROR_STATE;
+            NEXT_STATE <= PROTOCOL_ERROR_STATE;
            ELSE
             IF (OUT_COMPARATOR(1) = '1') THEN
-              STATE <= PROTOCOL_ERROR_STATE;
+              NEXT_STATE <= PROTOCOL_ERROR_STATE;
             ELSE
-              STATE <= EN_COUNT_80_2;
+              NEXT_STATE <= EN_COUNT_80_2;
             END IF;
            END IF;
          END IF;
        WHEN PROTOCOL_ERROR_STATE =>
          IF OUT_DEBOUNCER='1' THEN
-           STATE <= WAIT_FOR_BUTTON;
+           NEXT_STATE <= WAIT_FOR_BUTTON;
          ELSE
-           STATE <= PROTOCOL_ERROR_STATE;
+           NEXT_STATE <= PROTOCOL_ERROR_STATE;
          END IF;
-       WHEN CONFIG_COUNT_50 => STATE <= EN_COUNT_50;
+       WHEN CONFIG_COUNT_50 => NEXT_STATE <= EN_COUNT_50;
        WHEN EN_COUNT_50 =>
          IF (OUT_COMPARATOR(0) = '1') THEN
            IF PULSE = '1' THEN
-             STATE <= CONFIG_COUNT_26;
+             NEXT_STATE <= CONFIG_COUNT_26;
            ELSE
-             STATE <= EN_COUNT_50;
+             NEXT_STATE <= EN_COUNT_50;
            END IF;
           ELSE
            IF PULSE = '1' THEN
-            STATE <= PROTOCOL_ERROR_STATE;
+            NEXT_STATE <= PROTOCOL_ERROR_STATE;
            ELSE
             IF (OUT_COMPARATOR(1) = '1') THEN
-              STATE <= PROTOCOL_ERROR_STATE;
+              NEXT_STATE <= PROTOCOL_ERROR_STATE;
             ELSE
-              STATE <= EN_COUNT_50;
+              NEXT_STATE <= EN_COUNT_50;
             END IF;
            END IF;
          END IF;
-       WHEN CONFIG_COUNT_26 => STATE <= EN_COUNT_26;
+       WHEN CONFIG_COUNT_26 => NEXT_STATE <= EN_COUNT_26;
        WHEN EN_COUNT_26 =>
          IF PULSE = '1' THEN
            IF (OUT_COMPARATOR(1) = '1') THEN
              IF OUT_SECOND_COMPARATOR = '1' THEN
-               STATE <= REC_1;
+               NEXT_STATE <= REC_1;
              ELSE
-               STATE <= PROTOCOL_ERROR_STATE;
+               NEXT_STATE <= PROTOCOL_ERROR_STATE;
              END IF;
            ELSE
              IF OUT_SECOND_COMPARATOR = '1' THEN
-               STATE <= REC_0;
+               NEXT_STATE <= REC_0;
              ELSE
-               STATE <= PROTOCOL_ERROR_STATE;
+               NEXT_STATE <= PROTOCOL_ERROR_STATE;
              END IF;
            END IF;
          ELSE
            IF FINAL_CNT = '1' THEN
-             STATE <= PROTOCOL_ERROR_STATE;
+             NEXT_STATE <= PROTOCOL_ERROR_STATE;
            ELSE
-             STATE <= EN_COUNT_26;
+             NEXT_STATE <= EN_COUNT_26;
            END IF;
          END IF;
 	WHEN REC_0 =>
           IF FINAL_COUNTER = '1' THEN
- 	    STATE <= WAIT_FOR_BUTTON;
+ 	    NEXT_STATE <= WAIT_FOR_BUTTON;
           ELSE
-	    STATE <= EN_COUNT_50;  -- if a data has been received wait until a new high state is received
+	    NEXT_STATE <= EN_COUNT_50;  -- if a data has been received wait until a new high state is received
           END IF;
 	WHEN REC_1 =>
           IF FINAL_COUNTER = '1' THEN
-            STATE <= WAIT_FOR_BUTTON;
+            NEXT_STATE <= WAIT_FOR_BUTTON;
           ELSE
-            STATE <= EN_COUNT_50;
+            NEXT_STATE <= EN_COUNT_50;
           END IF;
-        END CASE;
-      END IF;
-    END IF;
-  END PROCESS;
+     END CASE;
+  END PROCESS P_Next_State;
 
-  cu_Output: PROCESS(State)
+  CU_Output: PROCESS(CURR_STATE)
   BEGIN
     EN              <= '0';
     INITIAL_ENABLE  <= '0';
@@ -195,12 +201,14 @@ BEGIN
     PROTOCOL_ERROR  <= '0';
     DATA            <= '0';
     INIT_COUNTER    <=  50000000;
-    CASE State IS
+    THRESHOLD_COMP  <=  0;
+    MARGIN          <=  0;
+    CASE CURR_STATE IS
       WHEN IDLE => NULL ;
       WHEN CONFIG_COUNT_1S => INITIAL_ENABLE <= '1'; BUSY_BIT <= '1'; INIT_COUNTER <= 1000000*freq;
       WHEN EN_COUNT_1S => EN <= '1'; BUSY_BIT <= '1';
       WHEN WAIT_FOR_BUTTON => NULL ;
-      WHEN CONFIG_COUNT_18M => INITIAL_ENABLE <= '1'; INIT_COUNTER <= 18000*freq; DATA_DRV <= '1';
+      WHEN CONFIG_COUNT_18M => INITIAL_ENABLE <= '1'; INIT_COUNTER <= 20000*freq; DATA_DRV <= '1';
       WHEN EN_COUNT_18M => EN <= '1'; DATA_DRV <= '1';
       WHEN CONFIG_COUNT_20 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 30*freq; MARGIN <= 13*freq; BUSY_BIT <= '1';
       WHEN EN_COUNT_20 => EN <= '1'; BUSY_BIT <= '1';
@@ -216,6 +224,6 @@ BEGIN
       WHEN REC_0 => INITIAL_ENABLE <= '1'; BUSY_BIT <= '1'; SHIFT_ENABLE <= '1'; THRESHOLD_COMP <= 50*freq; MARGIN <= 5*freq;
       WHEN REC_1 => DATA <= '1'; INITIAL_ENABLE <= '1'; BUSY_BIT <= '1'; SHIFT_ENABLE <= '1'; THRESHOLD_COMP <= 50*freq; MARGIN <= 5*freq;
     END CASE;
-  END PROCESS;
+  END PROCESS CU_Output;
   
 END ARCHITECTURE BEHAV;
