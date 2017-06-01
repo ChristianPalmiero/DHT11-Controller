@@ -137,13 +137,13 @@ begin
   begin
     out_second_comparator <= '0';
     if out_comparator_local(1) = '1' then  -- if count > 50 see if it falls in 1's range
-      if count <= 73*freq and count >= 67*freq then     -- 67-73 us
+      if count <= 75*freq and count >= 65*freq then     -- 67-73 us --relaxed 65-75 us
         out_second_comparator <= '1';
       else
         out_second_comparator <= '0';
       end if;
     else                              -- if count < 50 see if it falls in 0's range
-      if count <= 30*freq and count >= 24*freq then     -- 24-30 us
+      if count <= 35*freq and count >= 20*freq then     -- 24-30 us --relaxed 20-35 us
         out_second_comparator <= '1';
       else
         out_second_comparator <= '0';

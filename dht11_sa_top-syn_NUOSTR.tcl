@@ -9,7 +9,7 @@ array set ios {
   "sw[1]"         { "P15" "LVCMOS33" }
   "sw[2]"         { "W13" "LVCMOS33" }
   "sw[3]"         { "T16" "LVCMOS33" }
-  "data"          { "V12" "LVCMOS33" }
+  "data"          { "T20" "LVCMOS33" }
   "led[0]"        { "M14" "LVCMOS33" }
   "led[1]"        { "M15" "LVCMOS33" }
   "led[2]"        { "G14" "LVCMOS33" }

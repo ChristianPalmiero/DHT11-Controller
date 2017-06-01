@@ -1,3 +1,7 @@
+library unisim;
+use unisim.vcomponents.all;
+
+
 library ieee;
 use ieee.std_logic_1164.all;
 
@@ -22,9 +26,9 @@ architecture rtl of dht11_sa_top is
 
 begin
 
-  data_in <= data;
+  --data_in <= data;
 
-  data <= '0' when data_drv = '1' else 'Z';
+  --data <= '0' when data_drv = '1' else 'Z';
 
   u0: entity work.dht11_sa(rtl)
   generic map(
@@ -39,5 +43,19 @@ begin
     data_drv => data_drv,
     led      => led
   );
+
+  u1 : iobuf
+    generic map (
+      drive => 12,
+      iostandard => "lvcmos33",
+      slew => "slow")
+    port map (
+      o  => data_in,
+      io => data,
+      i  => '0',
+      t  => data_drvn
+  );
+
+data_drvn <= not data_drv;
 
 end architecture rtl;

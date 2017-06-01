@@ -210,15 +210,15 @@ BEGIN
       WHEN WAIT_FOR_BUTTON => NULL ;
       WHEN CONFIG_COUNT_18M => INITIAL_ENABLE <= '1'; INIT_COUNTER <= 20000*freq; DATA_DRV <= '1';
       WHEN EN_COUNT_18M => EN <= '1'; DATA_DRV <= '1';
-      WHEN CONFIG_COUNT_20 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 30*freq; MARGIN <= 13*freq; BUSY_BIT <= '1';
-      WHEN EN_COUNT_20 => EN <= '1'; BUSY_BIT <= '1'; THRESHOLD_COMP <= 30*freq; MARGIN <= 13*freq; 
+      WHEN CONFIG_COUNT_20 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 30*freq; MARGIN <= 20*freq; BUSY_BIT <= '1'; --30us +- 20us
+      WHEN EN_COUNT_20 => EN <= '1'; BUSY_BIT <= '1'; THRESHOLD_COMP <= 30*freq; MARGIN <= 20*freq; 
       WHEN PROTOCOL_ERROR_STATE => PROTOCOL_ERROR <= '1';
-      WHEN CONFIG_COUNT_80 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 80*freq; BUSY_BIT <= '1'; MARGIN <= 8*freq;
-      WHEN EN_COUNT_80 => EN <= '1';  BUSY_BIT <= '1'; THRESHOLD_COMP <= 80*freq; MARGIN <= 8*freq;
-      WHEN CONFIG_COUNT_80_2 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 80*freq; BUSY_BIT <= '1'; MARGIN <= 8*freq;
-      WHEN EN_COUNT_80_2 => EN <= '1';  BUSY_BIT <= '1'; THRESHOLD_COMP <= 80*freq; MARGIN <= 8*freq;
-      WHEN CONFIG_COUNT_50 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 50*freq; BUSY_BIT <= '1'; MARGIN <= 5*freq;
-      WHEN EN_COUNT_50 => EN <= '1';  BUSY_BIT <= '1'; THRESHOLD_COMP <= 50*freq; MARGIN <= 5*freq;
+      WHEN CONFIG_COUNT_80 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 80*freq; BUSY_BIT <= '1'; MARGIN <= 12*freq; --relaxed margin
+      WHEN EN_COUNT_80 => EN <= '1';  BUSY_BIT <= '1'; THRESHOLD_COMP <= 80*freq; MARGIN <= 12*freq;
+      WHEN CONFIG_COUNT_80_2 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 80*freq; BUSY_BIT <= '1'; MARGIN <= 12*freq;
+      WHEN EN_COUNT_80_2 => EN <= '1';  BUSY_BIT <= '1'; THRESHOLD_COMP <= 80*freq; MARGIN <= 12*freq;
+      WHEN CONFIG_COUNT_50 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 50*freq; BUSY_BIT <= '1'; MARGIN <= 10*freq; --relaxed margin
+      WHEN EN_COUNT_50 => EN <= '1';  BUSY_BIT <= '1'; THRESHOLD_COMP <= 50*freq; MARGIN <= 10*freq;
       WHEN CONFIG_COUNT_26 => INITIAL_ENABLE <= '1'; THRESHOLD_COMP <= 50*freq; BUSY_BIT <= '1'; INIT_COUNTER <= 77*freq;
       WHEN EN_COUNT_26 => EN <= '1';  BUSY_BIT <= '1'; THRESHOLD_COMP <= 50*freq;
       WHEN REC_0 => INITIAL_ENABLE <= '1'; BUSY_BIT <= '1'; SHIFT_ENABLE <= '1'; THRESHOLD_COMP <= 50*freq; MARGIN <= 5*freq;

@@ -27,8 +27,10 @@ architecture rtl of dht11_sa is
   signal checksum, sum_int : std_ulogic_vector(7 downto 0);
   signal checksum_ver_to_B : std_ulogic_vector(3 downto 0);
   signal nib_sel_to_A      : std_ulogic_vector(3 downto 0);
-
+  signal srstn		   : std_ulogic;
 begin
+	
+  srstn <= NOT(rst);
 
   deb: entity work.debouncer(rtl)
   port map(
@@ -47,7 +49,7 @@ begin
   )
   port map(
     clk      => clk,
-    srstn    => NOT(rst),
+    srstn    => srstn,
     start    => start,
     data_in  => data_in,
     data_drv => data_drv,

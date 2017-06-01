@@ -426,7 +426,7 @@ entity dht11_ctrl_sim is
 -- extra margin for reset-to-start delay and protocol error detection
 		margin:  real:= 0.1;
 -- Clock frequency (MHz)
-		freq:    positive range 1 to 1000:= 125
+		freq:    positive range 1 to 1000:= 1
 	);
 end entity dht11_ctrl_sim;
 
