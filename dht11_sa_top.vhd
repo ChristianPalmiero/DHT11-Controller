@@ -23,12 +23,9 @@ architecture rtl of dht11_sa_top is
 
   signal data_in:  std_ulogic;
   signal data_drv: std_ulogic;
+  signal data_drvn: std_ulogic;
 
 begin
-
-  --data_in <= data;
-
-  --data <= '0' when data_drv = '1' else 'Z';
 
   u0: entity work.dht11_sa(rtl)
   generic map(

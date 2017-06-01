@@ -20,7 +20,8 @@ entity datapath is
        data                   :           in    std_ulogic;    -- sent by the control unit after a change in the data has been detected in data_in by the two PULSE_GEN processes
        final_cnt	      :           out   std_ulogic;
        final_count	      :           out   std_ulogic;
-       pulse		      :           out   std_ulogic;
+       rising		      :           out   std_ulogic;
+       falling                :           out   std_ulogic;
        out_comparator         :           out   std_ulogic_vector(1 DOWNTO 0);
        out_second_comparator  :           out   std_ulogic;
        do                     : 	  out 	std_ulogic_vector(39 DOWNTO 0)
@@ -32,7 +33,6 @@ architecture beh of datapath is
 
   signal Q			:  std_ulogic_vector(39 DOWNTO 0);
   signal cnt                    :  integer range 0 to 40;
-  signal pulse_p, pulse_d      	:  std_ulogic;
   signal count                  :  integer;
   signal threshold              :  integer;
   signal dp, data_drv_dp	:  std_ulogic_vector(2 downto 0);
@@ -99,21 +99,8 @@ begin
       end if;
     end if;
   end process PULSE_GEN;
-  pulse_p <= dp(1) xor dp(0);
-
-  SECOND_PULSE_GEN: process(clk)
-  begin
-    if(clk' event and clk='1') then
-      if (rst='1') then
-        data_drv_dp <= (others=>'0');
-      else
-        data_drv_dp <= data_drv & data_drv_dp(2 downto 1);
-      end if;
-    end if;
-  end process SECOND_PULSE_GEN;
-  pulse_d <= data_drv_dp(1) xor data_drv_dp(0);
-
-  pulse <= pulse_p and not(pulse_d);
+  rising  <= dp(1) and not(dp(0));
+  falling <= not(dp(1)) and dp(0);
 
   COMPARATOR: process(threshold_comp, margin, count)
   begin

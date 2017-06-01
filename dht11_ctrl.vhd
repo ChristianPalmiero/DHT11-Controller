@@ -19,7 +19,7 @@ end entity dht11_ctrl;
 
 architecture rtl of dht11_ctrl is
 
-  signal rst, pulse, en, init_enable, shift_enable, data, final_cnt, final_count, out_second_comparator, data_drv_int : std_ulogic;
+  signal rst, rising, falling, en, init_enable, shift_enable, data, final_cnt, final_count, out_second_comparator, data_drv_int : std_ulogic;
   signal out_comparator : std_ulogic_vector(1 DOWNTO 0);	
   signal init_counter, margin, threshold_comp : integer;
 	
@@ -46,7 +46,8 @@ begin
     data                  => data,
     final_cnt	          => final_cnt,
     final_count	          => final_count,
-    pulse		  => pulse,
+    rising                => rising,
+    falling               => falling,
     out_comparator        => out_comparator,
     out_second_comparator => out_second_comparator,
     do                    => do
@@ -61,7 +62,8 @@ begin
     RST                    => rst,
     FINAL_COUNTER          => final_count,
     FINAL_CNT              => final_cnt,
-    PULSE                  => pulse,
+    RISING                 => rising,
+    FALLING                => falling,
     OUT_DEBOUNCER          => start,
     OUT_COMPARATOR         => out_comparator,
     OUT_SECOND_COMPARATOR  => out_second_comparator,
