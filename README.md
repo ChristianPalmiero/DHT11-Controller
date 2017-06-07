@@ -206,14 +206,18 @@ The following pictures and data show the humidity and temperature measurements.
 ### Temperature
 * Integer part: 00011001 -> 25°C
 ![alt text][T0]
+
 [T0]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/T0.jpg
 ![alt text][T1]
+
 [T1]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/T1.jpg
 ### Humidity
 * Integer part: 00100111 -> 39%
 ![alt text][H0]
+
 [H0]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/H0.jpg
 ![alt text][H1]
+
 [H1]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/H1.jpg
 # AXI4 Lite Version
 ## Specifications
