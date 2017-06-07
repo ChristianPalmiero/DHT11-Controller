@@ -141,7 +141,7 @@ the 3-states buffer that uses data_drv to drive the data line between the DHT11 
 #### DHT11 Controller Block Diagram
 ![alt text][dp]
 
-[dp]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/dp.png "Datapath"
+[dp]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/new_dp.png "Datapath"
 
 #### Datapath Technical Details
 
