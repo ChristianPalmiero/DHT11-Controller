@@ -24,7 +24,7 @@ architecture rtl of dht11_sa is
   signal b		   : std_ulogic;
   signal do                : std_ulogic_vector(39 downto 0);
   signal sipo_out_mux_in   : std_ulogic_vector(31 downto 0);
-  signal checksum, sum_int : std_ulogic_vector(7 downto 0);
+  signal checksum          : std_ulogic_vector(7 downto 0);
   signal checksum_ver_to_B : std_ulogic_vector(3 downto 0);
   signal nib_sel_to_A      : std_ulogic_vector(3 downto 0);
   signal srstn		   : std_ulogic;
@@ -84,9 +84,10 @@ begin
 
   Checksum_controller: process(checksum, sipo_out_mux_in)
   variable sum: unsigned(7 DOWNTO 0);
+  variable sum_int: std_ulogic_vector(7 downto 0);
   begin
     sum:= unsigned(sipo_out_mux_in(31 DOWNTO 24)) + unsigned(sipo_out_mux_in(23 DOWNTO 16)) + unsigned(sipo_out_mux_in(15 DOWNTO 8)) + unsigned(sipo_out_mux_in(7 DOWNTO 0));
-    sum_int<= std_ulogic_vector(sum);
+    sum_int:= std_ulogic_vector(sum);
     if sum_int = checksum then
       checksum_ver_to_B(0) <= '0';
     else

@@ -1,4 +1,4 @@
-#dht11_axi.vhd: axi_pkg.vhd dht11_ctrl.vhd
+dht11_axi.vhd: axi_pkg.vhd dht11_ctrl.vhd
 
 dht11_ctrl.vhd: datapath.vhd CU.vhd dht11_pkg.vhd 
 
