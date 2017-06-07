@@ -1,0 +1,1616 @@
+Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
+| Date         : Wed Jun  7 12:57:36 2017
+| Host         : mc-Lenovo-G500 running 64-bit Ubuntu 16.04.2 LTS
+| Command      : report_timing_summary -warn_on_violation -max_paths 10 -file top_wrapper_timing_summary_routed.rpt -rpx top_wrapper_timing_summary_routed.rpx
+| Design       : top_wrapper
+| Device       : 7z010-clg400
+| Speed File   : -1  PRODUCTION 1.11 2014-09-11
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  false
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock
+2. checking constant_clock
+3. checking pulse_width_clock
+4. checking unconstrained_internal_endpoints
+5. checking no_input_delay
+6. checking no_output_delay
+7. checking multiple_clock
+8. checking generated_clocks
+9. checking loops
+10. checking partial_input_delay
+11. checking partial_output_delay
+12. checking latch_loops
+
+1. checking no_clock
+--------------------
+ There are 2 register/latch pins with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/CU/FSM_sequential_CURR_STATE_reg[1]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/CU/FSM_sequential_CURR_STATE_reg[2]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/CU/FSM_sequential_CURR_STATE_reg[3]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/CU/FSM_sequential_CURR_STATE_reg[4]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[0]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[10]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[11]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[12]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[13]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[14]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[15]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[16]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[17]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[18]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[19]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[1]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[20]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[21]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[22]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[23]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[24]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[25]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[26]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[27]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[28]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[29]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[2]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[30]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[31]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[3]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[4]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[5]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[6]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[7]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[8]/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[9]/Q (HIGH)
+
+
+2. checking constant_clock
+--------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock
+-----------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints
+--------------------------------------------
+ There are 2 pins that are not constrained for maximum delay. (HIGH)
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay
+--------------------------
+ There are 0 input ports with no input delay specified.
+
+ There are 3 input ports with no input delay but user has a false path constraint. (MEDIUM)
+
+
+6. checking no_output_delay
+---------------------------
+ There are 0 ports with no output delay specified.
+
+ There are 5 ports with no output delay but user has a false path constraint (MEDIUM)
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock
+--------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks
+----------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops
+-----------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay
+--------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay
+---------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops
+------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+      0.582        0.000                      0                  324        0.162        0.000                      0                  324        3.500        0.000                       0                   161  
+
+
+All user specified timing constraints are met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock       Waveform(ns)         Period(ns)      Frequency(MHz)
+-----       ------------         ----------      --------------
+clk         {0.000 4.000}        8.000           125.000         
+clk_fpga_0  {0.000 5.000}        10.000          100.000         
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+clk                 0.582        0.000                      0                  324        0.162        0.000                      0                  324        3.500        0.000                       0                   161  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk
+  To Clock:  clk
+
+Setup :            0  Failing Endpoints,  Worst Slack        0.582ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.162ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        3.500ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.582ns  (required time - arrival time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[24]/R
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (clk rise@8.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.972ns  (logic 3.714ns (53.271%)  route 3.258ns (46.729%))
+  Logic Levels:           11  (CARRY4=8 LUT1=1 LUT6=2)
+  Clock Path Skew:        0.018ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.955ns = ( 12.955 - 8.000 ) 
+    Source Clock Delay      (SCD):    5.328ns
+    Clock Pessimism Removal (CPR):    0.391ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.491     1.491 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     3.567    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.668 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.660     5.328    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X34Y22         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X34Y22         FDRE (Prop_fdre_C_Q)         0.518     5.846 f  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/Q
+                         net (fo=5, routed)           0.497     6.344    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[0]
+    SLICE_X33Y20         LUT1 (Prop_lut1_I0_O)        0.124     6.468 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16/O
+                         net (fo=1, routed)           0.000     6.468    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16_n_0
+    SLICE_X33Y20         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     7.018 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7/CO[3]
+                         net (fo=1, routed)           0.000     7.018    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7_n_0
+    SLICE_X33Y21         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.132 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6/CO[3]
+                         net (fo=2, routed)           0.654     7.786    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6_n_0
+    SLICE_X33Y22         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     8.366 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.366    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5_n_0
+    SLICE_X33Y23         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.480 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7/CO[3]
+                         net (fo=1, routed)           0.000     8.480    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7_n_0
+    SLICE_X33Y24         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.594 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6/CO[3]
+                         net (fo=1, routed)           0.009     8.603    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6_n_0
+    SLICE_X33Y25         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.717 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.717    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5_n_0
+    SLICE_X33Y26         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     9.051 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_4/O[1]
+                         net (fo=1, routed)           0.726     9.776    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[26]
+    SLICE_X35Y24         LUT6 (Prop_lut6_I0_O)        0.303    10.079 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3/O
+                         net (fo=1, routed)           0.000    10.079    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3_n_0
+    SLICE_X35Y24         CARRY4 (Prop_carry4_S[0]_CO[2])
+                                                      0.536    10.615 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1/CO[2]
+                         net (fo=2, routed)           0.664    11.280    top_i/dht11_sa_top/U0/u0/u0/CU/CO[0]
+    SLICE_X39Y23         LUT6 (Prop_lut6_I1_O)        0.313    11.593 r  top_i/dht11_sa_top/U0/u0/u0/CU/count[0]_i_1/O
+                         net (fo=32, routed)          0.707    12.300    top_i/dht11_sa_top/U0/u0/u0/dp/FSM_sequential_CURR_STATE_reg[4]_5
+    SLICE_X36Y26         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[24]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        8.000     8.000 r  
+    L16                                               0.000     8.000 r  clk (IN)
+                         net (fo=0)                   0.000     8.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.421     9.421 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    11.301    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.392 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.563    12.955    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X36Y26         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[24]/C
+                         clock pessimism              0.391    13.346    
+                         clock uncertainty           -0.035    13.311    
+    SLICE_X36Y26         FDRE (Setup_fdre_C_R)       -0.429    12.882    top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[24]
+  -------------------------------------------------------------------
+                         required time                         12.882    
+                         arrival time                         -12.300    
+  -------------------------------------------------------------------
+                         slack                                  0.582    
+
+Slack (MET) :             0.582ns  (required time - arrival time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[25]/R
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (clk rise@8.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.972ns  (logic 3.714ns (53.271%)  route 3.258ns (46.729%))
+  Logic Levels:           11  (CARRY4=8 LUT1=1 LUT6=2)
+  Clock Path Skew:        0.018ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.955ns = ( 12.955 - 8.000 ) 
+    Source Clock Delay      (SCD):    5.328ns
+    Clock Pessimism Removal (CPR):    0.391ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.491     1.491 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     3.567    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.668 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.660     5.328    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X34Y22         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X34Y22         FDRE (Prop_fdre_C_Q)         0.518     5.846 f  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/Q
+                         net (fo=5, routed)           0.497     6.344    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[0]
+    SLICE_X33Y20         LUT1 (Prop_lut1_I0_O)        0.124     6.468 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16/O
+                         net (fo=1, routed)           0.000     6.468    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16_n_0
+    SLICE_X33Y20         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     7.018 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7/CO[3]
+                         net (fo=1, routed)           0.000     7.018    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7_n_0
+    SLICE_X33Y21         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.132 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6/CO[3]
+                         net (fo=2, routed)           0.654     7.786    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6_n_0
+    SLICE_X33Y22         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     8.366 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.366    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5_n_0
+    SLICE_X33Y23         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.480 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7/CO[3]
+                         net (fo=1, routed)           0.000     8.480    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7_n_0
+    SLICE_X33Y24         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.594 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6/CO[3]
+                         net (fo=1, routed)           0.009     8.603    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6_n_0
+    SLICE_X33Y25         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.717 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.717    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5_n_0
+    SLICE_X33Y26         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     9.051 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_4/O[1]
+                         net (fo=1, routed)           0.726     9.776    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[26]
+    SLICE_X35Y24         LUT6 (Prop_lut6_I0_O)        0.303    10.079 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3/O
+                         net (fo=1, routed)           0.000    10.079    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3_n_0
+    SLICE_X35Y24         CARRY4 (Prop_carry4_S[0]_CO[2])
+                                                      0.536    10.615 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1/CO[2]
+                         net (fo=2, routed)           0.664    11.280    top_i/dht11_sa_top/U0/u0/u0/CU/CO[0]
+    SLICE_X39Y23         LUT6 (Prop_lut6_I1_O)        0.313    11.593 r  top_i/dht11_sa_top/U0/u0/u0/CU/count[0]_i_1/O
+                         net (fo=32, routed)          0.707    12.300    top_i/dht11_sa_top/U0/u0/u0/dp/FSM_sequential_CURR_STATE_reg[4]_5
+    SLICE_X36Y26         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[25]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        8.000     8.000 r  
+    L16                                               0.000     8.000 r  clk (IN)
+                         net (fo=0)                   0.000     8.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.421     9.421 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    11.301    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.392 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.563    12.955    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X36Y26         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[25]/C
+                         clock pessimism              0.391    13.346    
+                         clock uncertainty           -0.035    13.311    
+    SLICE_X36Y26         FDRE (Setup_fdre_C_R)       -0.429    12.882    top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[25]
+  -------------------------------------------------------------------
+                         required time                         12.882    
+                         arrival time                         -12.300    
+  -------------------------------------------------------------------
+                         slack                                  0.582    
+
+Slack (MET) :             0.582ns  (required time - arrival time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[26]/R
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (clk rise@8.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.972ns  (logic 3.714ns (53.271%)  route 3.258ns (46.729%))
+  Logic Levels:           11  (CARRY4=8 LUT1=1 LUT6=2)
+  Clock Path Skew:        0.018ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.955ns = ( 12.955 - 8.000 ) 
+    Source Clock Delay      (SCD):    5.328ns
+    Clock Pessimism Removal (CPR):    0.391ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.491     1.491 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     3.567    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.668 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.660     5.328    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X34Y22         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X34Y22         FDRE (Prop_fdre_C_Q)         0.518     5.846 f  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/Q
+                         net (fo=5, routed)           0.497     6.344    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[0]
+    SLICE_X33Y20         LUT1 (Prop_lut1_I0_O)        0.124     6.468 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16/O
+                         net (fo=1, routed)           0.000     6.468    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16_n_0
+    SLICE_X33Y20         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     7.018 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7/CO[3]
+                         net (fo=1, routed)           0.000     7.018    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7_n_0
+    SLICE_X33Y21         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.132 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6/CO[3]
+                         net (fo=2, routed)           0.654     7.786    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6_n_0
+    SLICE_X33Y22         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     8.366 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.366    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5_n_0
+    SLICE_X33Y23         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.480 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7/CO[3]
+                         net (fo=1, routed)           0.000     8.480    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7_n_0
+    SLICE_X33Y24         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.594 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6/CO[3]
+                         net (fo=1, routed)           0.009     8.603    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6_n_0
+    SLICE_X33Y25         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.717 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.717    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5_n_0
+    SLICE_X33Y26         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     9.051 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_4/O[1]
+                         net (fo=1, routed)           0.726     9.776    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[26]
+    SLICE_X35Y24         LUT6 (Prop_lut6_I0_O)        0.303    10.079 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3/O
+                         net (fo=1, routed)           0.000    10.079    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3_n_0
+    SLICE_X35Y24         CARRY4 (Prop_carry4_S[0]_CO[2])
+                                                      0.536    10.615 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1/CO[2]
+                         net (fo=2, routed)           0.664    11.280    top_i/dht11_sa_top/U0/u0/u0/CU/CO[0]
+    SLICE_X39Y23         LUT6 (Prop_lut6_I1_O)        0.313    11.593 r  top_i/dht11_sa_top/U0/u0/u0/CU/count[0]_i_1/O
+                         net (fo=32, routed)          0.707    12.300    top_i/dht11_sa_top/U0/u0/u0/dp/FSM_sequential_CURR_STATE_reg[4]_5
+    SLICE_X36Y26         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[26]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        8.000     8.000 r  
+    L16                                               0.000     8.000 r  clk (IN)
+                         net (fo=0)                   0.000     8.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.421     9.421 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    11.301    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.392 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.563    12.955    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X36Y26         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[26]/C
+                         clock pessimism              0.391    13.346    
+                         clock uncertainty           -0.035    13.311    
+    SLICE_X36Y26         FDRE (Setup_fdre_C_R)       -0.429    12.882    top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[26]
+  -------------------------------------------------------------------
+                         required time                         12.882    
+                         arrival time                         -12.300    
+  -------------------------------------------------------------------
+                         slack                                  0.582    
+
+Slack (MET) :             0.582ns  (required time - arrival time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[27]/R
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (clk rise@8.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.972ns  (logic 3.714ns (53.271%)  route 3.258ns (46.729%))
+  Logic Levels:           11  (CARRY4=8 LUT1=1 LUT6=2)
+  Clock Path Skew:        0.018ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.955ns = ( 12.955 - 8.000 ) 
+    Source Clock Delay      (SCD):    5.328ns
+    Clock Pessimism Removal (CPR):    0.391ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.491     1.491 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     3.567    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.668 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.660     5.328    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X34Y22         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X34Y22         FDRE (Prop_fdre_C_Q)         0.518     5.846 f  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/Q
+                         net (fo=5, routed)           0.497     6.344    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[0]
+    SLICE_X33Y20         LUT1 (Prop_lut1_I0_O)        0.124     6.468 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16/O
+                         net (fo=1, routed)           0.000     6.468    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16_n_0
+    SLICE_X33Y20         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     7.018 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7/CO[3]
+                         net (fo=1, routed)           0.000     7.018    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7_n_0
+    SLICE_X33Y21         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.132 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6/CO[3]
+                         net (fo=2, routed)           0.654     7.786    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6_n_0
+    SLICE_X33Y22         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     8.366 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.366    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5_n_0
+    SLICE_X33Y23         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.480 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7/CO[3]
+                         net (fo=1, routed)           0.000     8.480    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7_n_0
+    SLICE_X33Y24         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.594 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6/CO[3]
+                         net (fo=1, routed)           0.009     8.603    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6_n_0
+    SLICE_X33Y25         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.717 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.717    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5_n_0
+    SLICE_X33Y26         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     9.051 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_4/O[1]
+                         net (fo=1, routed)           0.726     9.776    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[26]
+    SLICE_X35Y24         LUT6 (Prop_lut6_I0_O)        0.303    10.079 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3/O
+                         net (fo=1, routed)           0.000    10.079    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3_n_0
+    SLICE_X35Y24         CARRY4 (Prop_carry4_S[0]_CO[2])
+                                                      0.536    10.615 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1/CO[2]
+                         net (fo=2, routed)           0.664    11.280    top_i/dht11_sa_top/U0/u0/u0/CU/CO[0]
+    SLICE_X39Y23         LUT6 (Prop_lut6_I1_O)        0.313    11.593 r  top_i/dht11_sa_top/U0/u0/u0/CU/count[0]_i_1/O
+                         net (fo=32, routed)          0.707    12.300    top_i/dht11_sa_top/U0/u0/u0/dp/FSM_sequential_CURR_STATE_reg[4]_5
+    SLICE_X36Y26         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[27]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        8.000     8.000 r  
+    L16                                               0.000     8.000 r  clk (IN)
+                         net (fo=0)                   0.000     8.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.421     9.421 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    11.301    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.392 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.563    12.955    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X36Y26         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[27]/C
+                         clock pessimism              0.391    13.346    
+                         clock uncertainty           -0.035    13.311    
+    SLICE_X36Y26         FDRE (Setup_fdre_C_R)       -0.429    12.882    top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[27]
+  -------------------------------------------------------------------
+                         required time                         12.882    
+                         arrival time                         -12.300    
+  -------------------------------------------------------------------
+                         slack                                  0.582    
+
+Slack (MET) :             0.583ns  (required time - arrival time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[28]/R
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (clk rise@8.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.972ns  (logic 3.714ns (53.270%)  route 3.258ns (46.730%))
+  Logic Levels:           11  (CARRY4=8 LUT1=1 LUT6=2)
+  Clock Path Skew:        0.019ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.956ns = ( 12.956 - 8.000 ) 
+    Source Clock Delay      (SCD):    5.328ns
+    Clock Pessimism Removal (CPR):    0.391ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.491     1.491 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     3.567    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.668 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.660     5.328    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X34Y22         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X34Y22         FDRE (Prop_fdre_C_Q)         0.518     5.846 f  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/Q
+                         net (fo=5, routed)           0.497     6.344    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[0]
+    SLICE_X33Y20         LUT1 (Prop_lut1_I0_O)        0.124     6.468 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16/O
+                         net (fo=1, routed)           0.000     6.468    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16_n_0
+    SLICE_X33Y20         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     7.018 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7/CO[3]
+                         net (fo=1, routed)           0.000     7.018    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7_n_0
+    SLICE_X33Y21         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.132 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6/CO[3]
+                         net (fo=2, routed)           0.654     7.786    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6_n_0
+    SLICE_X33Y22         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     8.366 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.366    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5_n_0
+    SLICE_X33Y23         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.480 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7/CO[3]
+                         net (fo=1, routed)           0.000     8.480    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7_n_0
+    SLICE_X33Y24         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.594 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6/CO[3]
+                         net (fo=1, routed)           0.009     8.603    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6_n_0
+    SLICE_X33Y25         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.717 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.717    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5_n_0
+    SLICE_X33Y26         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     9.051 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_4/O[1]
+                         net (fo=1, routed)           0.726     9.776    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[26]
+    SLICE_X35Y24         LUT6 (Prop_lut6_I0_O)        0.303    10.079 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3/O
+                         net (fo=1, routed)           0.000    10.079    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3_n_0
+    SLICE_X35Y24         CARRY4 (Prop_carry4_S[0]_CO[2])
+                                                      0.536    10.615 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1/CO[2]
+                         net (fo=2, routed)           0.664    11.280    top_i/dht11_sa_top/U0/u0/u0/CU/CO[0]
+    SLICE_X39Y23         LUT6 (Prop_lut6_I1_O)        0.313    11.593 r  top_i/dht11_sa_top/U0/u0/u0/CU/count[0]_i_1/O
+                         net (fo=32, routed)          0.708    12.300    top_i/dht11_sa_top/U0/u0/u0/dp/FSM_sequential_CURR_STATE_reg[4]_5
+    SLICE_X36Y27         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[28]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        8.000     8.000 r  
+    L16                                               0.000     8.000 r  clk (IN)
+                         net (fo=0)                   0.000     8.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.421     9.421 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    11.301    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.392 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.564    12.956    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X36Y27         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[28]/C
+                         clock pessimism              0.391    13.347    
+                         clock uncertainty           -0.035    13.312    
+    SLICE_X36Y27         FDRE (Setup_fdre_C_R)       -0.429    12.883    top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[28]
+  -------------------------------------------------------------------
+                         required time                         12.883    
+                         arrival time                         -12.300    
+  -------------------------------------------------------------------
+                         slack                                  0.583    
+
+Slack (MET) :             0.583ns  (required time - arrival time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[29]/R
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (clk rise@8.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.972ns  (logic 3.714ns (53.270%)  route 3.258ns (46.730%))
+  Logic Levels:           11  (CARRY4=8 LUT1=1 LUT6=2)
+  Clock Path Skew:        0.019ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.956ns = ( 12.956 - 8.000 ) 
+    Source Clock Delay      (SCD):    5.328ns
+    Clock Pessimism Removal (CPR):    0.391ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.491     1.491 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     3.567    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.668 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.660     5.328    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X34Y22         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X34Y22         FDRE (Prop_fdre_C_Q)         0.518     5.846 f  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/Q
+                         net (fo=5, routed)           0.497     6.344    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[0]
+    SLICE_X33Y20         LUT1 (Prop_lut1_I0_O)        0.124     6.468 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16/O
+                         net (fo=1, routed)           0.000     6.468    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16_n_0
+    SLICE_X33Y20         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     7.018 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7/CO[3]
+                         net (fo=1, routed)           0.000     7.018    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7_n_0
+    SLICE_X33Y21         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.132 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6/CO[3]
+                         net (fo=2, routed)           0.654     7.786    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6_n_0
+    SLICE_X33Y22         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     8.366 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.366    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5_n_0
+    SLICE_X33Y23         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.480 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7/CO[3]
+                         net (fo=1, routed)           0.000     8.480    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7_n_0
+    SLICE_X33Y24         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.594 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6/CO[3]
+                         net (fo=1, routed)           0.009     8.603    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6_n_0
+    SLICE_X33Y25         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.717 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.717    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5_n_0
+    SLICE_X33Y26         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     9.051 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_4/O[1]
+                         net (fo=1, routed)           0.726     9.776    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[26]
+    SLICE_X35Y24         LUT6 (Prop_lut6_I0_O)        0.303    10.079 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3/O
+                         net (fo=1, routed)           0.000    10.079    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3_n_0
+    SLICE_X35Y24         CARRY4 (Prop_carry4_S[0]_CO[2])
+                                                      0.536    10.615 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1/CO[2]
+                         net (fo=2, routed)           0.664    11.280    top_i/dht11_sa_top/U0/u0/u0/CU/CO[0]
+    SLICE_X39Y23         LUT6 (Prop_lut6_I1_O)        0.313    11.593 r  top_i/dht11_sa_top/U0/u0/u0/CU/count[0]_i_1/O
+                         net (fo=32, routed)          0.708    12.300    top_i/dht11_sa_top/U0/u0/u0/dp/FSM_sequential_CURR_STATE_reg[4]_5
+    SLICE_X36Y27         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[29]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        8.000     8.000 r  
+    L16                                               0.000     8.000 r  clk (IN)
+                         net (fo=0)                   0.000     8.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.421     9.421 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    11.301    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.392 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.564    12.956    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X36Y27         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[29]/C
+                         clock pessimism              0.391    13.347    
+                         clock uncertainty           -0.035    13.312    
+    SLICE_X36Y27         FDRE (Setup_fdre_C_R)       -0.429    12.883    top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[29]
+  -------------------------------------------------------------------
+                         required time                         12.883    
+                         arrival time                         -12.300    
+  -------------------------------------------------------------------
+                         slack                                  0.583    
+
+Slack (MET) :             0.583ns  (required time - arrival time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[30]/R
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (clk rise@8.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.972ns  (logic 3.714ns (53.270%)  route 3.258ns (46.730%))
+  Logic Levels:           11  (CARRY4=8 LUT1=1 LUT6=2)
+  Clock Path Skew:        0.019ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.956ns = ( 12.956 - 8.000 ) 
+    Source Clock Delay      (SCD):    5.328ns
+    Clock Pessimism Removal (CPR):    0.391ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.491     1.491 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     3.567    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.668 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.660     5.328    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X34Y22         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X34Y22         FDRE (Prop_fdre_C_Q)         0.518     5.846 f  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/Q
+                         net (fo=5, routed)           0.497     6.344    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[0]
+    SLICE_X33Y20         LUT1 (Prop_lut1_I0_O)        0.124     6.468 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16/O
+                         net (fo=1, routed)           0.000     6.468    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16_n_0
+    SLICE_X33Y20         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     7.018 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7/CO[3]
+                         net (fo=1, routed)           0.000     7.018    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7_n_0
+    SLICE_X33Y21         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.132 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6/CO[3]
+                         net (fo=2, routed)           0.654     7.786    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6_n_0
+    SLICE_X33Y22         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     8.366 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.366    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5_n_0
+    SLICE_X33Y23         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.480 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7/CO[3]
+                         net (fo=1, routed)           0.000     8.480    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7_n_0
+    SLICE_X33Y24         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.594 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6/CO[3]
+                         net (fo=1, routed)           0.009     8.603    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6_n_0
+    SLICE_X33Y25         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.717 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.717    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5_n_0
+    SLICE_X33Y26         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     9.051 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_4/O[1]
+                         net (fo=1, routed)           0.726     9.776    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[26]
+    SLICE_X35Y24         LUT6 (Prop_lut6_I0_O)        0.303    10.079 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3/O
+                         net (fo=1, routed)           0.000    10.079    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3_n_0
+    SLICE_X35Y24         CARRY4 (Prop_carry4_S[0]_CO[2])
+                                                      0.536    10.615 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1/CO[2]
+                         net (fo=2, routed)           0.664    11.280    top_i/dht11_sa_top/U0/u0/u0/CU/CO[0]
+    SLICE_X39Y23         LUT6 (Prop_lut6_I1_O)        0.313    11.593 r  top_i/dht11_sa_top/U0/u0/u0/CU/count[0]_i_1/O
+                         net (fo=32, routed)          0.708    12.300    top_i/dht11_sa_top/U0/u0/u0/dp/FSM_sequential_CURR_STATE_reg[4]_5
+    SLICE_X36Y27         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[30]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        8.000     8.000 r  
+    L16                                               0.000     8.000 r  clk (IN)
+                         net (fo=0)                   0.000     8.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.421     9.421 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    11.301    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.392 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.564    12.956    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X36Y27         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[30]/C
+                         clock pessimism              0.391    13.347    
+                         clock uncertainty           -0.035    13.312    
+    SLICE_X36Y27         FDRE (Setup_fdre_C_R)       -0.429    12.883    top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[30]
+  -------------------------------------------------------------------
+                         required time                         12.883    
+                         arrival time                         -12.300    
+  -------------------------------------------------------------------
+                         slack                                  0.583    
+
+Slack (MET) :             0.583ns  (required time - arrival time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[31]/R
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (clk rise@8.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.972ns  (logic 3.714ns (53.270%)  route 3.258ns (46.730%))
+  Logic Levels:           11  (CARRY4=8 LUT1=1 LUT6=2)
+  Clock Path Skew:        0.019ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.956ns = ( 12.956 - 8.000 ) 
+    Source Clock Delay      (SCD):    5.328ns
+    Clock Pessimism Removal (CPR):    0.391ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.491     1.491 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     3.567    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.668 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.660     5.328    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X34Y22         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X34Y22         FDRE (Prop_fdre_C_Q)         0.518     5.846 f  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/Q
+                         net (fo=5, routed)           0.497     6.344    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[0]
+    SLICE_X33Y20         LUT1 (Prop_lut1_I0_O)        0.124     6.468 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16/O
+                         net (fo=1, routed)           0.000     6.468    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16_n_0
+    SLICE_X33Y20         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     7.018 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7/CO[3]
+                         net (fo=1, routed)           0.000     7.018    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7_n_0
+    SLICE_X33Y21         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.132 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6/CO[3]
+                         net (fo=2, routed)           0.654     7.786    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6_n_0
+    SLICE_X33Y22         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     8.366 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.366    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5_n_0
+    SLICE_X33Y23         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.480 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7/CO[3]
+                         net (fo=1, routed)           0.000     8.480    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7_n_0
+    SLICE_X33Y24         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.594 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6/CO[3]
+                         net (fo=1, routed)           0.009     8.603    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6_n_0
+    SLICE_X33Y25         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.717 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.717    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5_n_0
+    SLICE_X33Y26         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     9.051 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_4/O[1]
+                         net (fo=1, routed)           0.726     9.776    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[26]
+    SLICE_X35Y24         LUT6 (Prop_lut6_I0_O)        0.303    10.079 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3/O
+                         net (fo=1, routed)           0.000    10.079    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3_n_0
+    SLICE_X35Y24         CARRY4 (Prop_carry4_S[0]_CO[2])
+                                                      0.536    10.615 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1/CO[2]
+                         net (fo=2, routed)           0.664    11.280    top_i/dht11_sa_top/U0/u0/u0/CU/CO[0]
+    SLICE_X39Y23         LUT6 (Prop_lut6_I1_O)        0.313    11.593 r  top_i/dht11_sa_top/U0/u0/u0/CU/count[0]_i_1/O
+                         net (fo=32, routed)          0.708    12.300    top_i/dht11_sa_top/U0/u0/u0/dp/FSM_sequential_CURR_STATE_reg[4]_5
+    SLICE_X36Y27         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[31]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        8.000     8.000 r  
+    L16                                               0.000     8.000 r  clk (IN)
+                         net (fo=0)                   0.000     8.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.421     9.421 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    11.301    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.392 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.564    12.956    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X36Y27         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[31]/C
+                         clock pessimism              0.391    13.347    
+                         clock uncertainty           -0.035    13.312    
+    SLICE_X36Y27         FDRE (Setup_fdre_C_R)       -0.429    12.883    top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[31]
+  -------------------------------------------------------------------
+                         required time                         12.883    
+                         arrival time                         -12.300    
+  -------------------------------------------------------------------
+                         slack                                  0.583    
+
+Slack (MET) :             0.612ns  (required time - arrival time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[0]/R
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (clk rise@8.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.946ns  (logic 3.714ns (53.469%)  route 3.232ns (46.531%))
+  Logic Levels:           11  (CARRY4=8 LUT1=1 LUT6=2)
+  Clock Path Skew:        0.022ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.959ns = ( 12.959 - 8.000 ) 
+    Source Clock Delay      (SCD):    5.328ns
+    Clock Pessimism Removal (CPR):    0.391ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.491     1.491 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     3.567    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.668 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.660     5.328    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X34Y22         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X34Y22         FDRE (Prop_fdre_C_Q)         0.518     5.846 f  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/Q
+                         net (fo=5, routed)           0.497     6.344    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[0]
+    SLICE_X33Y20         LUT1 (Prop_lut1_I0_O)        0.124     6.468 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16/O
+                         net (fo=1, routed)           0.000     6.468    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16_n_0
+    SLICE_X33Y20         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     7.018 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7/CO[3]
+                         net (fo=1, routed)           0.000     7.018    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7_n_0
+    SLICE_X33Y21         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.132 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6/CO[3]
+                         net (fo=2, routed)           0.654     7.786    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6_n_0
+    SLICE_X33Y22         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     8.366 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.366    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5_n_0
+    SLICE_X33Y23         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.480 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7/CO[3]
+                         net (fo=1, routed)           0.000     8.480    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7_n_0
+    SLICE_X33Y24         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.594 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6/CO[3]
+                         net (fo=1, routed)           0.009     8.603    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6_n_0
+    SLICE_X33Y25         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.717 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.717    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5_n_0
+    SLICE_X33Y26         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     9.051 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_4/O[1]
+                         net (fo=1, routed)           0.726     9.776    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[26]
+    SLICE_X35Y24         LUT6 (Prop_lut6_I0_O)        0.303    10.079 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3/O
+                         net (fo=1, routed)           0.000    10.079    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3_n_0
+    SLICE_X35Y24         CARRY4 (Prop_carry4_S[0]_CO[2])
+                                                      0.536    10.615 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1/CO[2]
+                         net (fo=2, routed)           0.664    11.280    top_i/dht11_sa_top/U0/u0/u0/CU/CO[0]
+    SLICE_X39Y23         LUT6 (Prop_lut6_I1_O)        0.313    11.593 r  top_i/dht11_sa_top/U0/u0/u0/CU/count[0]_i_1/O
+                         net (fo=32, routed)          0.682    12.274    top_i/dht11_sa_top/U0/u0/u0/dp/FSM_sequential_CURR_STATE_reg[4]_5
+    SLICE_X36Y20         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[0]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        8.000     8.000 r  
+    L16                                               0.000     8.000 r  clk (IN)
+                         net (fo=0)                   0.000     8.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.421     9.421 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    11.301    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.392 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.567    12.959    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X36Y20         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[0]/C
+                         clock pessimism              0.391    13.350    
+                         clock uncertainty           -0.035    13.315    
+    SLICE_X36Y20         FDRE (Setup_fdre_C_R)       -0.429    12.886    top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[0]
+  -------------------------------------------------------------------
+                         required time                         12.886    
+                         arrival time                         -12.274    
+  -------------------------------------------------------------------
+                         slack                                  0.612    
+
+Slack (MET) :             0.612ns  (required time - arrival time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[1]/R
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            8.000ns  (clk rise@8.000ns - clk rise@0.000ns)
+  Data Path Delay:        6.946ns  (logic 3.714ns (53.469%)  route 3.232ns (46.531%))
+  Logic Levels:           11  (CARRY4=8 LUT1=1 LUT6=2)
+  Clock Path Skew:        0.022ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.959ns = ( 12.959 - 8.000 ) 
+    Source Clock Delay      (SCD):    5.328ns
+    Clock Pessimism Removal (CPR):    0.391ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.491     1.491 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           2.076     3.567    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.668 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.660     5.328    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X34Y22         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X34Y22         FDRE (Prop_fdre_C_Q)         0.518     5.846 f  top_i/dht11_sa_top/U0/u0/u0/dp/threshold_reg[4]/Q
+                         net (fo=5, routed)           0.497     6.344    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[0]
+    SLICE_X33Y20         LUT1 (Prop_lut1_I0_O)        0.124     6.468 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16/O
+                         net (fo=1, routed)           0.000     6.468    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_16_n_0
+    SLICE_X33Y20         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     7.018 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7/CO[3]
+                         net (fo=1, routed)           0.000     7.018    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_7_n_0
+    SLICE_X33Y21         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.132 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6/CO[3]
+                         net (fo=2, routed)           0.654     7.786    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_6_n_0
+    SLICE_X33Y22         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     8.366 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.366    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry_i_5_n_0
+    SLICE_X33Y23         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.480 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7/CO[3]
+                         net (fo=1, routed)           0.000     8.480    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_7_n_0
+    SLICE_X33Y24         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.594 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6/CO[3]
+                         net (fo=1, routed)           0.009     8.603    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_6_n_0
+    SLICE_X33Y25         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     8.717 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     8.717    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__0_i_5_n_0
+    SLICE_X33Y26         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     9.051 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_4/O[1]
+                         net (fo=1, routed)           0.726     9.776    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt1[26]
+    SLICE_X35Y24         LUT6 (Prop_lut6_I0_O)        0.303    10.079 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3/O
+                         net (fo=1, routed)           0.000    10.079    top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1_i_3_n_0
+    SLICE_X35Y24         CARRY4 (Prop_carry4_S[0]_CO[2])
+                                                      0.536    10.615 r  top_i/dht11_sa_top/U0/u0/u0/dp/final_cnt0_carry__1/CO[2]
+                         net (fo=2, routed)           0.664    11.280    top_i/dht11_sa_top/U0/u0/u0/CU/CO[0]
+    SLICE_X39Y23         LUT6 (Prop_lut6_I1_O)        0.313    11.593 r  top_i/dht11_sa_top/U0/u0/u0/CU/count[0]_i_1/O
+                         net (fo=32, routed)          0.682    12.274    top_i/dht11_sa_top/U0/u0/u0/dp/FSM_sequential_CURR_STATE_reg[4]_5
+    SLICE_X36Y20         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[1]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        8.000     8.000 r  
+    L16                                               0.000     8.000 r  clk (IN)
+                         net (fo=0)                   0.000     8.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         1.421     9.421 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.880    11.301    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.392 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         1.567    12.959    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X36Y20         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[1]/C
+                         clock pessimism              0.391    13.350    
+                         clock uncertainty           -0.035    13.315    
+    SLICE_X36Y20         FDRE (Setup_fdre_C_R)       -0.429    12.886    top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[1]
+  -------------------------------------------------------------------
+                         required time                         12.886    
+                         arrival time                         -12.274    
+  -------------------------------------------------------------------
+                         slack                                  0.612    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.162ns  (arrival time - required time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[22]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[23]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk rise@0.000ns - clk rise@0.000ns)
+  Data Path Delay:        0.265ns  (logic 0.141ns (53.201%)  route 0.124ns (46.799%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.037ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.012ns
+    Source Clock Delay      (SCD):    1.495ns
+    Clock Pessimism Removal (CPR):    0.480ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.259     0.259 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.627     0.886    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.912 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.583     1.495    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X39Y20         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[22]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y20         FDRE (Prop_fdre_C_Q)         0.141     1.636 r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[22]/Q
+                         net (fo=2, routed)           0.124     1.760    top_i/dht11_sa_top/U0/u0/u0/dp/Q[22]
+    SLICE_X41Y19         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[23]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.447     0.447 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.683     1.130    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.159 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.853     2.012    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X41Y19         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[23]/C
+                         clock pessimism             -0.480     1.532    
+    SLICE_X41Y19         FDRE (Hold_fdre_C_D)         0.066     1.598    top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[23]
+  -------------------------------------------------------------------
+                         required time                         -1.598    
+                         arrival time                           1.760    
+  -------------------------------------------------------------------
+                         slack                                  0.162    
+
+Slack (MET) :             0.165ns  (arrival time - required time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[14]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[15]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk rise@0.000ns - clk rise@0.000ns)
+  Data Path Delay:        0.225ns  (logic 0.164ns (72.791%)  route 0.061ns (27.209%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.014ns
+    Source Clock Delay      (SCD):    1.500ns
+    Clock Pessimism Removal (CPR):    0.501ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.259     0.259 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.627     0.886    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.912 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.588     1.500    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X42Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[14]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X42Y17         FDRE (Prop_fdre_C_Q)         0.164     1.664 r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[14]/Q
+                         net (fo=2, routed)           0.061     1.725    top_i/dht11_sa_top/U0/u0/u0/dp/Q[14]
+    SLICE_X43Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[15]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.447     0.447 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.683     1.130    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.159 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.855     2.014    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X43Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[15]/C
+                         clock pessimism             -0.501     1.513    
+    SLICE_X43Y17         FDRE (Hold_fdre_C_D)         0.047     1.560    top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[15]
+  -------------------------------------------------------------------
+                         required time                         -1.560    
+                         arrival time                           1.725    
+  -------------------------------------------------------------------
+                         slack                                  0.165    
+
+Slack (MET) :             0.167ns  (arrival time - required time)
+  Source:                 top_i/dht11_sa_top/U0/u0/deb/cnt1_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/deb/r_reg/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk rise@0.000ns - clk rise@0.000ns)
+  Data Path Delay:        0.287ns  (logic 0.189ns (65.896%)  route 0.098ns (34.104%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.016ns
+    Source Clock Delay      (SCD):    1.502ns
+    Clock Pessimism Removal (CPR):    0.501ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.259     0.259 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.627     0.886    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.912 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.590     1.502    top_i/dht11_sa_top/U0/u0/deb/clk
+    SLICE_X40Y15         FDRE                                         r  top_i/dht11_sa_top/U0/u0/deb/cnt1_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X40Y15         FDRE (Prop_fdre_C_Q)         0.141     1.643 f  top_i/dht11_sa_top/U0/u0/deb/cnt1_reg[0]/Q
+                         net (fo=6, routed)           0.098     1.741    top_i/dht11_sa_top/U0/u0/deb/cnt1_reg__0[0]
+    SLICE_X41Y15         LUT5 (Prop_lut5_I2_O)        0.048     1.789 r  top_i/dht11_sa_top/U0/u0/deb/r_i_1/O
+                         net (fo=1, routed)           0.000     1.789    top_i/dht11_sa_top/U0/u0/deb/r0
+    SLICE_X41Y15         FDRE                                         r  top_i/dht11_sa_top/U0/u0/deb/r_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.447     0.447 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.683     1.130    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.159 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.857     2.016    top_i/dht11_sa_top/U0/u0/deb/clk
+    SLICE_X41Y15         FDRE                                         r  top_i/dht11_sa_top/U0/u0/deb/r_reg/C
+                         clock pessimism             -0.501     1.515    
+    SLICE_X41Y15         FDRE (Hold_fdre_C_D)         0.107     1.622    top_i/dht11_sa_top/U0/u0/deb/r_reg
+  -------------------------------------------------------------------
+                         required time                         -1.622    
+                         arrival time                           1.789    
+  -------------------------------------------------------------------
+                         slack                                  0.167    
+
+Slack (MET) :             0.169ns  (arrival time - required time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[37]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[38]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk rise@0.000ns - clk rise@0.000ns)
+  Data Path Delay:        0.271ns  (logic 0.141ns (51.952%)  route 0.130ns (48.048%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.032ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.012ns
+    Source Clock Delay      (SCD):    1.500ns
+    Clock Pessimism Removal (CPR):    0.480ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.259     0.259 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.627     0.886    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.912 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.588     1.500    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X40Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[37]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X40Y17         FDRE (Prop_fdre_C_Q)         0.141     1.641 r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[37]/Q
+                         net (fo=2, routed)           0.130     1.771    top_i/dht11_sa_top/U0/u0/u0/dp/Q[37]
+    SLICE_X39Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[38]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.447     0.447 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.683     1.130    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.159 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.853     2.012    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X39Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[38]/C
+                         clock pessimism             -0.480     1.532    
+    SLICE_X39Y17         FDRE (Hold_fdre_C_D)         0.070     1.602    top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[38]
+  -------------------------------------------------------------------
+                         required time                         -1.602    
+                         arrival time                           1.771    
+  -------------------------------------------------------------------
+                         slack                                  0.169    
+
+Slack (MET) :             0.176ns  (arrival time - required time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[33]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[34]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk rise@0.000ns - clk rise@0.000ns)
+  Data Path Delay:        0.271ns  (logic 0.141ns (52.007%)  route 0.130ns (47.993%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.032ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.012ns
+    Source Clock Delay      (SCD):    1.500ns
+    Clock Pessimism Removal (CPR):    0.480ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.259     0.259 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.627     0.886    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.912 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.588     1.500    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X40Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[33]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X40Y17         FDRE (Prop_fdre_C_Q)         0.141     1.641 r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[33]/Q
+                         net (fo=2, routed)           0.130     1.771    top_i/dht11_sa_top/U0/u0/u0/dp/Q[33]
+    SLICE_X38Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[34]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.447     0.447 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.683     1.130    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.159 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.853     2.012    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X38Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[34]/C
+                         clock pessimism             -0.480     1.532    
+    SLICE_X38Y17         FDRE (Hold_fdre_C_D)         0.063     1.595    top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[34]
+  -------------------------------------------------------------------
+                         required time                         -1.595    
+                         arrival time                           1.771    
+  -------------------------------------------------------------------
+                         slack                                  0.176    
+
+Slack (MET) :             0.180ns  (arrival time - required time)
+  Source:                 top_i/dht11_sa_top/U0/u0/deb/cnt1_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/deb/lp_reg/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk rise@0.000ns - clk rise@0.000ns)
+  Data Path Delay:        0.284ns  (logic 0.186ns (65.536%)  route 0.098ns (34.464%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.016ns
+    Source Clock Delay      (SCD):    1.502ns
+    Clock Pessimism Removal (CPR):    0.501ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.259     0.259 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.627     0.886    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.912 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.590     1.502    top_i/dht11_sa_top/U0/u0/deb/clk
+    SLICE_X40Y15         FDRE                                         r  top_i/dht11_sa_top/U0/u0/deb/cnt1_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X40Y15         FDRE (Prop_fdre_C_Q)         0.141     1.643 f  top_i/dht11_sa_top/U0/u0/deb/cnt1_reg[0]/Q
+                         net (fo=6, routed)           0.098     1.741    top_i/dht11_sa_top/U0/u0/deb/cnt1_reg__0[0]
+    SLICE_X41Y15         LUT4 (Prop_lut4_I0_O)        0.045     1.786 r  top_i/dht11_sa_top/U0/u0/deb/lp_i_1/O
+                         net (fo=1, routed)           0.000     1.786    top_i/dht11_sa_top/U0/u0/deb/lp_i_1_n_0
+    SLICE_X41Y15         FDRE                                         r  top_i/dht11_sa_top/U0/u0/deb/lp_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.447     0.447 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.683     1.130    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.159 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.857     2.016    top_i/dht11_sa_top/U0/u0/deb/clk
+    SLICE_X41Y15         FDRE                                         r  top_i/dht11_sa_top/U0/u0/deb/lp_reg/C
+                         clock pessimism             -0.501     1.515    
+    SLICE_X41Y15         FDRE (Hold_fdre_C_D)         0.091     1.606    top_i/dht11_sa_top/U0/u0/deb/lp_reg
+  -------------------------------------------------------------------
+                         required time                         -1.606    
+                         arrival time                           1.786    
+  -------------------------------------------------------------------
+                         slack                                  0.180    
+
+Slack (MET) :             0.180ns  (arrival time - required time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[32]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[33]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk rise@0.000ns - clk rise@0.000ns)
+  Data Path Delay:        0.263ns  (logic 0.141ns (53.584%)  route 0.122ns (46.416%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.014ns
+    Source Clock Delay      (SCD):    1.500ns
+    Clock Pessimism Removal (CPR):    0.501ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.259     0.259 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.627     0.886    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.912 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.588     1.500    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X41Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[32]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X41Y17         FDRE (Prop_fdre_C_Q)         0.141     1.641 r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[32]/Q
+                         net (fo=2, routed)           0.122     1.763    top_i/dht11_sa_top/U0/u0/u0/dp/Q[32]
+    SLICE_X40Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[33]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.447     0.447 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.683     1.130    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.159 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.855     2.014    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X40Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[33]/C
+                         clock pessimism             -0.501     1.513    
+    SLICE_X40Y17         FDRE (Hold_fdre_C_D)         0.070     1.583    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[33]
+  -------------------------------------------------------------------
+                         required time                         -1.583    
+                         arrival time                           1.763    
+  -------------------------------------------------------------------
+                         slack                                  0.180    
+
+Slack (MET) :             0.186ns  (arrival time - required time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[32]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[33]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk rise@0.000ns - clk rise@0.000ns)
+  Data Path Delay:        0.270ns  (logic 0.141ns (52.318%)  route 0.129ns (47.682%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.032ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.012ns
+    Source Clock Delay      (SCD):    1.500ns
+    Clock Pessimism Removal (CPR):    0.480ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.259     0.259 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.627     0.886    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.912 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.588     1.500    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X41Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[32]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X41Y17         FDRE (Prop_fdre_C_Q)         0.141     1.641 r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[32]/Q
+                         net (fo=2, routed)           0.129     1.769    top_i/dht11_sa_top/U0/u0/u0/dp/Q[32]
+    SLICE_X38Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[33]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.447     0.447 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.683     1.130    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.159 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.853     2.012    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X38Y17         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[33]/C
+                         clock pessimism             -0.480     1.532    
+    SLICE_X38Y17         FDRE (Hold_fdre_C_D)         0.052     1.584    top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[33]
+  -------------------------------------------------------------------
+                         required time                         -1.584    
+                         arrival time                           1.769    
+  -------------------------------------------------------------------
+                         slack                                  0.186    
+
+Slack (MET) :             0.188ns  (arrival time - required time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[18]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[19]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk rise@0.000ns - clk rise@0.000ns)
+  Data Path Delay:        0.271ns  (logic 0.141ns (51.993%)  route 0.130ns (48.007%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.015ns
+    Source Clock Delay      (SCD):    1.501ns
+    Clock Pessimism Removal (CPR):    0.501ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.259     0.259 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.627     0.886    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.912 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.589     1.501    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X40Y16         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[18]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X40Y16         FDRE (Prop_fdre_C_Q)         0.141     1.642 r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[18]/Q
+                         net (fo=2, routed)           0.130     1.772    top_i/dht11_sa_top/U0/u0/u0/dp/Q[18]
+    SLICE_X41Y16         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[19]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.447     0.447 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.683     1.130    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.159 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.856     2.015    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X41Y16         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[19]/C
+                         clock pessimism             -0.501     1.514    
+    SLICE_X41Y16         FDRE (Hold_fdre_C_D)         0.070     1.584    top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[19]
+  -------------------------------------------------------------------
+                         required time                         -1.584    
+                         arrival time                           1.772    
+  -------------------------------------------------------------------
+                         slack                                  0.188    
+
+Slack (MET) :             0.190ns  (arrival time - required time)
+  Source:                 top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[35]/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Destination:            top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[36]/D
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@4.000ns period=8.000ns})
+  Path Group:             clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk rise@0.000ns - clk rise@0.000ns)
+  Data Path Delay:        0.272ns  (logic 0.141ns (51.799%)  route 0.131ns (48.201%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.012ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.013ns
+    Source Clock Delay      (SCD):    1.501ns
+    Clock Pessimism Removal (CPR):    0.500ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.259     0.259 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.627     0.886    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.912 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.589     1.501    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X40Y16         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[35]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X40Y16         FDRE (Prop_fdre_C_Q)         0.141     1.642 r  top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[35]/Q
+                         net (fo=2, routed)           0.131     1.773    top_i/dht11_sa_top/U0/u0/u0/dp/Q[35]
+    SLICE_X40Y18         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[36]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        0.000     0.000 r  
+    L16                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L16                  IBUF (Prop_ibuf_I_O)         0.447     0.447 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.683     1.130    clk_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.159 r  clk_IBUF_BUFG_inst/O
+                         net (fo=160, routed)         0.854     2.013    top_i/dht11_sa_top/U0/u0/u0/dp/clk
+    SLICE_X40Y18         FDRE                                         r  top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[36]/C
+                         clock pessimism             -0.500     1.513    
+    SLICE_X40Y18         FDRE (Hold_fdre_C_D)         0.070     1.583    top_i/dht11_sa_top/U0/u0/u0/dp/do_reg[36]
+  -------------------------------------------------------------------
+                         required time                         -1.583    
+                         arrival time                           1.773    
+  -------------------------------------------------------------------
+                         slack                                  0.190    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         clk
+Waveform(ns):       { 0.000 4.000 }
+Period(ns):         8.000
+Sources:            { clk }
+
+Check Type        Corner  Lib Pin  Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location        Pin
+Min Period        n/a     BUFG/I   n/a            2.155         8.000       5.845      BUFGCTRL_X0Y16  clk_IBUF_BUFG_inst/I
+Min Period        n/a     FDRE/C   n/a            1.000         8.000       7.000      SLICE_X41Y28    top_i/dht11_sa_top/U0/u0/u0/CU/FSM_sequential_CURR_STATE_reg[0]/C
+Min Period        n/a     FDRE/C   n/a            1.000         8.000       7.000      SLICE_X41Y29    top_i/dht11_sa_top/U0/u0/u0/CU/FSM_sequential_CURR_STATE_reg[1]/C
+Min Period        n/a     FDRE/C   n/a            1.000         8.000       7.000      SLICE_X42Y29    top_i/dht11_sa_top/U0/u0/u0/CU/FSM_sequential_CURR_STATE_reg[2]/C
+Min Period        n/a     FDRE/C   n/a            1.000         8.000       7.000      SLICE_X42Y28    top_i/dht11_sa_top/U0/u0/u0/CU/FSM_sequential_CURR_STATE_reg[3]/C
+Min Period        n/a     FDRE/C   n/a            1.000         8.000       7.000      SLICE_X40Y29    top_i/dht11_sa_top/U0/u0/u0/CU/FSM_sequential_CURR_STATE_reg[4]/C
+Min Period        n/a     FDRE/C   n/a            1.000         8.000       7.000      SLICE_X40Y19    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[0]/C
+Min Period        n/a     FDRE/C   n/a            1.000         8.000       7.000      SLICE_X42Y17    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[10]/C
+Min Period        n/a     FDRE/C   n/a            1.000         8.000       7.000      SLICE_X42Y18    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[11]/C
+Min Period        n/a     FDRE/C   n/a            1.000         8.000       7.000      SLICE_X42Y18    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[12]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X41Y28    top_i/dht11_sa_top/U0/u0/u0/CU/FSM_sequential_CURR_STATE_reg[0]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X41Y29    top_i/dht11_sa_top/U0/u0/u0/CU/FSM_sequential_CURR_STATE_reg[1]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X42Y29    top_i/dht11_sa_top/U0/u0/u0/CU/FSM_sequential_CURR_STATE_reg[2]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X42Y28    top_i/dht11_sa_top/U0/u0/u0/CU/FSM_sequential_CURR_STATE_reg[3]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X40Y29    top_i/dht11_sa_top/U0/u0/u0/CU/FSM_sequential_CURR_STATE_reg[4]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X40Y19    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[0]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X42Y17    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[10]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X42Y18    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[11]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X42Y18    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[12]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X42Y18    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[13]/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X40Y19    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[0]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X42Y18    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[11]/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X42Y18    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[11]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X42Y18    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[12]/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X42Y18    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[12]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X42Y18    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[13]/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X42Y18    top_i/dht11_sa_top/U0/u0/u0/dp/Q_reg[13]/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X36Y23    top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[13]/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X36Y23    top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[14]/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         4.000       3.500      SLICE_X36Y23    top_i/dht11_sa_top/U0/u0/u0/dp/count_reg[15]/C
+
+
+
