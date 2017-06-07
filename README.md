@@ -156,7 +156,7 @@ The datapath has been designed at RT-level according to a behavioral view. It co
 [cu]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/fsm.png "Control Unit"
 
 ## Functional Validation
-The design has been validated through several simulation environments:
+The design has been validated through three simulation environments:
 * sim/dht_emul.vhd: a complete simulation environment for dht11_sa(rtl) where a full 40-bit data transmission between the sensor and the controller is executed;
 * sim/dht11_ctrl_sim_old: a complete simulation environment for dht11_ctrl(rtl) with two generic parameters, the margin for protocol error detection and the clock frequency;
 * sim/dht11_ctrl_sim: a less aggressive simulation environment for dht11_ctrl(rtl) with no generic parameters and a fixed clock frequency equal to 2 MHz.
@@ -164,7 +164,7 @@ The design has been validated through several simulation environments:
 ## Synthesis
 
 The design has been synthesised with the Vivado tool provided by Xilinx and mapped in the programmable logic part of the Zynq core of the Zybo. 
-The [dht11_sa_top-syn.tcl](https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/syn/dht11_sa_top-syn.tcl) TCL script automates the synthesis.
+The [dht11_sa_top.syn.tcl](https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/syn/dht11_sa_top.syn.tcl) TCL script automates the synthesis.
 
 The primary clock "clk" comes from the 125 MHz Zynq reference clock.
 The synchronous active high reset "rst" comes from the press-button BTN1 of the Zybo board, the button "btn" is the press-button BTN0. 
