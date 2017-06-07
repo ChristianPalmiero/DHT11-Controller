@@ -132,9 +132,9 @@ end architecture rtl;
 
 The DHT11 controller is composed of several entities, listed according to a bottom-up approach:
 * **CU.vhd**: it is the control unit, a complex finite state machine;
-* **datapath.vhd**: it is a collection of functional units;
-* **dht11_ctrl.vhd**: it comprises the CU and the datapath;
-* **dht11_sa.vhd**: it comprises the ctrl, a debouncer, a checksum controller and two multiplexers that handle the data to be displayed on the LEDs though the switches;
+* **datapath.vhd**: it is a collection of functional units.
+* **dht11_ctrl.vhd**: it comprises the CU and the datapath.
+* **dht11_sa.vhd**: it comprises the ctrl, a debouncer, a checksum controller and two multiplexers that handle the data to be displayed on the LEDs though the switches.
 * **dht11_sa_top.vhd**: it is the top level entity that models
 the 3-states buffer that uses data_drv to drive the data line between the DHT11 controller and the DHT11 sensor.
 
@@ -163,8 +163,8 @@ The datapath has been designed at RT-level according to a behavioral view. It co
 
 ## Functional Validation
 The design has been validated through three simulation environments:
-* sim/dht_emul.vhd: a complete simulation environment for dht11_sa(rtl) where a full 40-bit data transmission between the sensor and the controller is executed;
-* sim/dht11_ctrl_sim_old: a complete simulation environment for dht11_ctrl(rtl) with two generic parameters, the margin for protocol error detection and the clock frequency;
+* sim/dht_emul.vhd: a complete simulation environment for dht11_sa(rtl) where a full 40-bit data transmission between the sensor and the controller is executed.
+* sim/dht11_ctrl_sim_old: a complete simulation environment for dht11_ctrl(rtl) with two generic parameters, the margin for protocol error detection and the clock frequency.
 * sim/dht11_ctrl_sim: a less aggressive simulation environment for dht11_ctrl(rtl) with no generic parameters and a fixed clock frequency equal to 2 MHz.
 
 ## Synthesis
@@ -228,10 +228,10 @@ After the reset has been de-asserted, the wrapper waits for 1 second and sends t
 ### DHT11 Controller Internals
 
 The DHT11 controller is composed of several entities, listed according to a bottom-up approach:
-* **CU.vhd**: it is the control unit, a complex finite state machine;
-* **datapath.vhd**: it is a collection of functional units;
-* **dht11_ctrl.vhd**: it comprises the CU and the datapath;
-* **dht11_axi.vhd**: it is the AXI4 lite wrapper around the dht11_ctrl(rtl);
+* **CU.vhd**: it is the control unit, a complex finite state machine.
+* **datapath.vhd**: it is a collection of functional units.
+* **dht11_ctrl.vhd**: it comprises the CU and the datapath.
+* **dht11_axi.vhd**: it is the AXI4 lite wrapper around the dht11_ctrl(rtl).
 * **dht11_axi_top.vhd**: it is the top level entity that models
 the 3-states buffer that uses data_drv to drive the data line between the DHT11 controller and the DHT11 sensor.
 
