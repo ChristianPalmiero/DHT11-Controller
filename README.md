@@ -212,7 +212,7 @@ The following pictures and data show the temperature and humidity measurements.
 
 [T0]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/T0.jpg
 ### Humidity
-* Integer part: 00100101 -> 39%
+* Integer part: 00100101 -> 37%
 ![alt text][H1]
 
 [H1]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/H1.jpg
