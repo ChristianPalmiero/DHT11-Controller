@@ -75,15 +75,61 @@ end entity dht11_axi;
 
 architecture rtl of dht11_axi is
 
-	signal start:  std_ulogic;
-	signal pe:     std_ulogic;
-	signal b:      std_ulogic;
-	signal ce:     std_ulogic;
-	signal do:     std_ulogic_vector(39 downto 0);
-	signal data:   std_ulogic_vector(31 downto 0);
-	signal status: std_ulogic_vector(31 downto 0);
-
+	signal start:            std_ulogic;
+	signal pe:               std_ulogic;
+	signal b:                std_ulogic;
+	signal ce:               std_ulogic;
+	signal do:               std_ulogic_vector(39 downto 0);
+	signal data:             std_ulogic_vector(31 downto 0);
+	signal status:           std_ulogic_vector(31 downto 0);
+        signal awaddr_signal:    std_ulogic_vector(29 downto 0);
+        type write_state_type is (IDLE, WRITE_VALID, DEC_ERROR, SLAVE_ERROR);
+        type current_state_write, next_state_write: write_state_type;
+        type read_state_type is (IDLE, DEC_ERROR, OKAY);
+        type current_state_read, next_state_read: read_state_type;
+	constant mask:		std_ulogic_vector(29 downto 0) := x"FFFFFFFC";
+	constant base_data:	std_ulogic_vector(29 downto 0) := x"00000000";
+	constant base_status:	std_ulogic_vector(29 downto 0) := x"00000004";
+   
 begin
+        
+        
+
+        awaddr_signal <= s0_axi_awaddr and mask; 
+        
+        TRANSITION: process(clk)
+        begin
+          if(clk' event and clk = '1') then
+            if(rst = '1') then
+              current_state_read  <= IDLE;
+              current_state_write <= IDLE;
+            else
+              current_state_read  <= next_state_read;
+              current_state_write <= next_state_write;
+ 	    end if;
+          end if;
+        end process TRANSITION;
+	
+	WRITE_NEXT_STATE: process(current_state_write, s0_axi_wvalid, s0_axi_awvalid, s0_axi_arvalid, awaddr_signal, s0_axi_bready)
+        begin
+         next_state_write <= current_state_write;
+         case (current_state_write) is
+           when IDLE  => 
+   	     if (s0_axi_wvalid = '1' and  s0_axi_awvalid = '1' and  s0_axi_arvalid = '0') then
+	       next_state_write <= WRITE_VALID;
+             else
+               next_state_write <= IDLE;
+             end if;
+           when WRITE_VALID =>
+             if (awaddr_signal = base_data or awaddr_signal = base_status) then
+               next_state_write <= SLAVE_ERROR;
+             else 
+               next_state_write <= DEC_ERROR;
+             end if;
+    
+
+
+
 
 	u0: entity work.dht11_ctrl(rtl)
 	generic map(
@@ -92,7 +138,7 @@ begin
 	port map(
 		clk      => aclk,
 		srstn    => aresetn,
-		start    => start,
+        	start    => start,
 		data_in  => data_in,
 		data_drv => data_drv,
 		pe       => pe,
