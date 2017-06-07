@@ -13,8 +13,9 @@ This project consist of a complete digital hardware design of a controller for t
 * Marco Coletta
 
 ## Directory Structure
-The "sim" folder contains all the files intended for the simulation of the DHT11 Controller; the "syn" folder contains the synthesizable version of the previously mentioned files.
+The "sim" folder contains all the files intended for the simulation of the DHT11 Controller; the "syn" folder contains the synthesizable version of the same files plus the synthesis scripts.
 
+# Standalone Version
 ## Detailed Specifications
 ### Global
 - 4 ms Communication  
@@ -95,7 +96,6 @@ We use the 4 LEDs to display 4 bits of data (the 4 bits chosen by the switches S
    |  L3  |  L2  |  L1  |  L0  |
    +------+------+------+------+
 ```
-
 ## Architecture Design
 ### Common Interface
 
@@ -128,11 +128,17 @@ begin
 end architecture rtl;
 ```
 
-### DHT11 Controller Internals 
+### DHT11 Controller Internals
 
-The DHT11 controller is composed of two main blocks: the datapath, a collection of functional units, and the control unit, a complex FSM. 
-  
-#### Datapath Block Diagram
+The DHT11 controller is composed of several entities, listed according to a bottom-up approach:
+* **CU.vhd**: it is the control unit, a complex finite state machine;
+* **datapath.vhd**: it is a collection of functional units;
+* **dht11_ctrl.vhd**: it comprises the CU and the datapath;
+* **dht11_sa.vhd**: it comprises the ctrl, a debouncer, a checksum controller and two multiplexers that handle the data to be displayed on the LEDs though the switches;
+* **dht11_sa_top.vhd**: it is the top level entity that models
+the 3-states buffer that uses data_drv to drive the data line between the DHT11 controller and the DHT11 sensor.
+
+#### DHT11 Controller Block Diagram
 ![alt text][dp]
 
 [dp]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/dp.png "Datapath"
@@ -163,13 +169,13 @@ The design has been validated through three simulation environments:
 
 ## Synthesis
 
-The design has been synthesised with the Vivado tool provided by Xilinx and mapped in the programmable logic part of the Zynq core of the Zybo. 
+The design has been synthesised with the Vivado tool provided by Xilinx and mapped in the programmable logic part of the Zynq core of the Zybo.
 The [dht11_sa_top.syn.tcl](https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/syn/dht11_sa_top.syn.tcl) TCL script automates the synthesis.
 
 The primary clock "clk" comes from the 125 MHz Zynq reference clock.
-The synchronous active high reset "rst" comes from the press-button BTN1 of the Zybo board, the button "btn" is the press-button BTN0. 
+The synchronous active high reset "rst" comes from the press-button BTN1 of the Zybo board, the button "btn" is the press-button BTN0.
 The four "sw" input signals are mapped to the Zybo board four slide switches.
-The four "led" output signals are sent to the 4 LEDs of the Zybo board. 
+The four "led" output signals are sent to the 4 LEDs of the Zybo board.
 Finally, the "data" inout line is mapped to the pin JE1 of the Pmod connector J.
 <center>
 
@@ -189,9 +195,76 @@ Finally, the "data" inout line is mapped to the pin JE1 of the Pmod connector J.
    | led[3] |  D18 | LVCMOS33 |
 
 </center>
-The synthesis result are in syn/top_wrapper.bit, a binary file that is used by the Zynq core to configure the programmable logic. 
+The synthesis result are in syn/top_wrapper.bit, a binary file that is used by the Zynq core to configure the programmable logic.
 The result is a boot image: syn/boot.bin.
 Two important reports have also been produced: the resources usage report (syn/top_wrapper_utilization_placed.rpt);
 the timing report (syn/top_wrapper_timing_summary_routed.rpt).
+
+## Experiments on the Zybo
+
+# AXI4 Lite Version
+## Specifications
+The AXI4 lite wrapper around the dht11_ctrl(rtl) contains two 32-bits read-only registers:  
+
+| Address |               Name  |  Description |
+|:-------:|:-------------------:|:------------:|
+|0x00000000-0x00000003|  DATA   | read-only, 32-bits, data register|
+|0x00000004-0x00000007 | STATUS | read-only, 32-bits, status register|
+|0x00000008-...        | -      | unmapped|
+
+Writing to DATA or STATUS shall be answered with a SLVERR response. Reading or writing to the unmapped address space [0x00000008,...] shall be answered with a DECERR response.
+
+The reset value of DATA is 0xffffffff.  
+DATA(31 downto 16) = last sensed humidity level, Most Significant Bit: DATA(31).  
+DATA(15 downto 0) = last sensed temperature, MSB: DATA(15).  
+
+The reset value of STATUS is 0x00000000.  
+STATUS = (2 => PE, 1 => B, 0 => CE, others => '0'), where PE, B and CE are the protocol error, busy and checksum error flags, respectively.
+
+After the reset has been de-asserted, the wrapper waits for 1 second and sends the first start command to the controller. Then, it waits for one more second, samples DO(39 downto 8) (the sensed values) in DATA, samples the PE and CE flags in STATUS, and sends a new start command to the controller. And so on every second, until the reset is asserted. When the reset is de-asserted, every rising edge of the clock, the B output of the DHT11 controller is sampled in the B flag of STATUS.
+
+## Architecture Design
+
+### DHT11 Controller Internals
+
+The DHT11 controller is composed of several entities, listed according to a bottom-up approach:
+* **CU.vhd**: it is the control unit, a complex finite state machine;
+* **datapath.vhd**: it is a collection of functional units;
+* **dht11_ctrl.vhd**: it comprises the CU and the datapath;
+* **dht11_axi.vhd**: it is the AXI4 lite wrapper around the dht11_ctrl(rtl);
+* **dht11_axi_top.vhd**: it is the top level entity that models
+the 3-states buffer that uses data_drv to drive the data line between the DHT11 controller and the DHT11 sensor.
+
+#### AXI4 Lite Wrapper Technical Details
+
+The AXI4 lite wrapper around the dht11_ctrl(rtl) handles the communication protocol between and AXI master and an AXI slave. It comprises:  
+* **WRITE FSM**: it handles the write operations. The slave asserts the AWREADY and the WREADY signals after the master has asserted **both** the AWVALID and the WREADY simultaneously; then, it responds with an error. Note that the write operations have **lower** priority with respect to the read operations.
+* **READ FSM**: it handles the read operations. The slave pre-asserts the ARREADY signal (it is high all the time) so that each time the AXI master issues a read request, it will be acknowledged on the next rising edge of the clock; then, it responds. Note that the read operations have **higher** priority with respect to the write operations..
+* **CHECKSUM_CONTROLLER**: it describes a combinational block that takes as input the the 40-bit data coming from the SIPO, computes the checksum and compares it with the one that has been computed and sent by the sensor. The checksum controller outputs the checksum error bit.
+* **COUNTER**:
+
+#### Write FSM Flow Diagram
+![alt text][wfsm]
+
+[wfsm]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/wfsm.png "Write FSM"
+
+#### Read FSM Flow Diagram
+![alt text][rfsm]
+
+[rfsm]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/rfsm.png "Read FSM"
+
+## Functional Validation
+The design has been validated through one simulation environment:
+* sim/: a complete simulation environment for dht11_sa(rtl) where a full 40-bit data transmission between the sensor and the controller is executed;
+
+## Synthesis
+
+The design has been synthesised with the Vivado tool provided by Xilinx and mapped in the programmable logic part of the Zynq core of the Zybo.
+The [dht11_axi_top.syn.tcl](https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/syn/dht11_axi_top.syn.tcl) TCL script automates the synthesis.
+
+The synthesis result are in syn/axi_top_wrapper.bit, a binary file that is used by the Zynq core to configure the programmable logic.
+The result is a boot image: syn/axi_boot.bin.
+Two important reports have also been produced: the resources usage report (syn/axi_top_wrapper_utilization_placed.rpt);
+the timing report (syn/axi_top_wrapper_timing_summary_routed.rpt).
 
 ## Experiments on the Zybo
