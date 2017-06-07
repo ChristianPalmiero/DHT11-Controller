@@ -201,24 +201,24 @@ Two important reports have also been produced: the resources usage report (syn/t
 the timing report (syn/top_wrapper_timing_summary_routed.rpt).
 
 ## Experiments on the Zybo
-An experiment in the EURECOM university room 104 has been executed on July, 7th.
-The following pictures and data show the humidity and temperature measurements.
+An experiment in the EURECOM Campus Room 104 has been executed on July, 7th.
+The following pictures and data show the temperature and humidity measurements.
 ### Temperature
 * Integer part: 00011001 -> 25°C
-![alt text][T0]
-
-[T0]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/T0.jpg
 ![alt text][T1]
 
 [T1]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/T1.jpg
-### Humidity
-* Integer part: 00100111 -> 39%
-![alt text][H0]
+![alt text][T0]
 
-[H0]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/H0.jpg
+[T0]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/T0.jpg
+### Humidity
+* Integer part: 00100101 -> 39%
 ![alt text][H1]
 
 [H1]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/H1.jpg
+![alt text][H0]
+
+[H0]: https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/img/H0.jpg
 # AXI4 Lite Version
 ## Specifications
 The AXI4 lite wrapper around the dht11_ctrl(rtl) contains two 32-bits read-only registers:  
