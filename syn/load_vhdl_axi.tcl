@@ -3,8 +3,10 @@
 
 set source_files { 
 	dht11_pkg_syn.vhd
-	debouncer.vhd
-	dht11_ctrl.vhd
+        CU.vhd
+        datapath.vhd
+        debouncer.vhd
+        dht11_ctrl.vhd
 	axi_pkg.vhd
 	dht11_axi.vhd
 	dht11_axi_top.vhd

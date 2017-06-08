@@ -35,7 +35,7 @@ architecture beh of datapath is
   signal cnt                    :  integer range 0 to 40;
   signal count                  :  integer;
   signal threshold              :  integer;
-  signal dp, data_drv_dp	:  std_ulogic_vector(2 downto 0);
+  signal dp             	:  std_ulogic_vector(2 downto 0);
   signal out_comparator_local   :  std_ulogic_vector(1 DOWNTO 0);
 
 begin

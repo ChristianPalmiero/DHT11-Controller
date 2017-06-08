@@ -1,0 +1,24 @@
+Sab4z> devmem 0x40000000 32
+0x24001900
+Sab4z> devmem 0x40000004 32
+0x00000000
+Sab4z> devmem 0x40000008 32
+Unhandled fault: external abort on non-linefetch (0x018) at 0xb6f72008
+pgd = dde58000
+[b6f72008] *pgd=1dd6f831, *pte=40000783, *ppte=40000e33
+Bus error
+Sab4z> devmem 0x40000000 32 0
+Unhandled fault: external abort on non-linefetch (0x1818) at 0xb6fc5000
+pgd = ddd50000
+[b6fc5000] *pgd=1dce7831, *pte=40000743, *ppte=40000c33
+Bus error
+Sab4z> devmem 0x40000004 32 0
+Unhandled fault: external abort on non-linefetch (0x1818) at 0xb6f67004
+pgd = dde58000
+[b6f67004] *pgd=1dce7831, *pte=40000743, *ppte=40000c33
+Bus error
+Sab4z> devmem 0x40000008 32 0
+Unhandled fault: external abort on non-linefetch (0x818) at 0xb6f7e008
+pgd = ddd50000
+[b6f7e008] *pgd=1dce7831, *pte=40000743, *ppte=40000c33
+Bus error
