@@ -13,8 +13,8 @@ This project consist of a complete digital hardware design of a controller for t
 * Marco Coletta
 
 ## Directory Structure
-The "sim" folder contains all the files intended for the simulation of the DHT11 Controller; the "syn" folder contains the synthesizable version of the same files plus the synthesis scripts.  
-The "syn" folder contains also two sub-directories: "Standalone", with the results of the standalone version synthesis, and "AXI4Lite", with the results of the AXI4Lite version synthesis.   
+The "[sim](sim)" folder contains all the files intended for the simulation of the DHT11 Controller; the "[syn](syn)" folder contains the synthesizable version of the same files plus the synthesis scripts.  
+The "[syn](syn)" folder contains also two sub-directories: "[Standalone](syn/Standalone)", with the results of the standalone version synthesis, and "[AXI4Lite](syn/AXI4Lite)", with the results of the AXI4Lite version synthesis.   
 
 # Standalone Version
 ## Detailed Specifications
