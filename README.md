@@ -13,7 +13,8 @@ This project consist of a complete digital hardware design of a controller for t
 * Marco Coletta
 
 ## Directory Structure
-The "sim" folder contains all the files intended for the simulation of the DHT11 Controller; the "syn" folder contains the synthesizable version of the same files plus the synthesis scripts.
+The "sim" folder contains all the files intended for the simulation of the DHT11 Controller; the "syn" folder contains the synthesizable version of the same files plus the synthesis scripts.  
+The "syn" folder contains also two sub-directories: "Standalone", with some useful results of the standalone version synthesis, and "AXI4Lite", with some useful results of the AXI4Lite version synthesis.   
 
 # Standalone Version
 ## Detailed Specifications
@@ -195,14 +196,13 @@ Finally, the "data" inout line is mapped to the pin JE1 of the Pmod connector J.
    | led[3] |  D18 | LVCMOS33 |
 
 </center>
-The synthesis result are in syn/top_wrapper.bit, a binary file that is used by the Zynq core to configure the programmable logic.
-The result is a boot image: syn/boot.bin.
-Two important reports have also been produced: the resources usage report (syn/top_wrapper_utilization_placed.rpt);
-the timing report (syn/top_wrapper_timing_summary_routed.rpt).
+The synthesis result is a boot image: syn/Standalone/boot.bin.
+Two important reports have also been produced: the resources usage report (syn/Standalone/top_wrapper_utilization_placed.rpt);
+the timing report (syn/Standalone/top_wrapper_timing_summary_routed.rpt).
 
 ## Experiments on the Zybo
 An experiment in the EURECOM Campus Room 104 has been executed on July, 7th.
-The following pictures and data show the temperature and humidity measurements.
+The following pictures and data refer to temperature and humidity measurements.
 ### Temperature
 * Integer part: 00011001 -> 25°C
 ![alt text][T1]
@@ -254,11 +254,14 @@ the 3-states buffer that uses data_drv to drive the data line between the DHT11 
 
 #### AXI4 Lite Wrapper Technical Details
 
-The AXI4 lite wrapper around the dht11_ctrl(rtl) handles the communication protocol between and AXI master and an AXI slave. It comprises:  
+The AXI4 lite wrapper around the dht11_ctrl(rtl) handles the communication protocol between and AXI master and an AXI slave. Other than the crtl, it comprises:  
 * **WRITE FSM**: it handles the write operations. The slave asserts the AWREADY and the WREADY signals after the master has asserted **both** the AWVALID and the WREADY simultaneously; then, it responds with an error. Note that the write operations have **lower** priority with respect to the read operations.
-* **READ FSM**: it handles the read operations. The slave pre-asserts the ARREADY signal (it is high all the time) so that each time the AXI master issues a read request, it will be acknowledged on the next rising edge of the clock; then, it responds. Note that the read operations have **higher** priority with respect to the write operations..
+* **READ FSM**: it handles the read operations. The slave pre-asserts the ARREADY signal so that each time the AXI master issues a read request, it will be acknowledged on the next rising edge of the clock; then, it responds properly. Note that the read operations have **higher** priority with respect to the write operations.
 * **CHECKSUM_CONTROLLER**: it describes a combinational block that takes as input the the 40-bit data coming from the SIPO, computes the checksum and compares it with the one that has been computed and sent by the sensor. The checksum controller outputs the checksum error bit.
-* **COUNTER**:
+* **COUNTER**: it is a counter used to count up to 1 second.
+* **REGS**: it is a process that sets the values of the two internal registers, DATA and STATUS.
+* **ADDRESS_SAMPLER**: it is a process that samples the read address as soon as the ARREADY signal is asserted.
+* **MUX**: it is a process that retrieves the proper DATA or STATUS content depending on the sampled read address.
 
 #### Write FSM Flow Diagram
 ![alt text][wfsm]
@@ -272,16 +275,53 @@ The AXI4 lite wrapper around the dht11_ctrl(rtl) handles the communication proto
 
 ## Functional Validation
 The design has been validated through one simulation environment:
-* sim/: a complete simulation environment for dht11_sa(rtl) where a full 40-bit data transmission between the sensor and the controller is executed;
+* sim/dht11_axi_sim.vhd: a complete simulation environment for dht11_axi(rtl);
 
 ## Synthesis
 
 The design has been synthesised with the Vivado tool provided by Xilinx and mapped in the programmable logic part of the Zynq core of the Zybo.
 The [dht11_axi_top.syn.tcl](https://github.com/ChristianPalmiero/DHT11_Controller/blob/master/syn/dht11_axi_top.syn.tcl) TCL script automates the synthesis.
 
-The synthesis result are in syn/axi_top_wrapper.bit, a binary file that is used by the Zynq core to configure the programmable logic.
-The result is a boot image: syn/axi_boot.bin.
-Two important reports have also been produced: the resources usage report (syn/axi_top_wrapper_utilization_placed.rpt);
-the timing report (syn/axi_top_wrapper_timing_summary_routed.rpt).
+The synthesis result is a boot image: syn/AXI4Lite/axi_boot.bin.
+Two important reports have also been produced: the resources usage report (syn/AXI4Lite/axi_top_wrapper_utilization_placed.rpt);
+the timing report (syn/AXI4Lite/axi_top_wrapper_timing_summary_routed.rpt).
 
 ## Experiments on the Zybo
+To communicate with the sensor from the software world, the devmem utility has been used to read or write at various locations. The base address of the DHT11 AXI controller is 0x4000_0000. Example:
+
+```bash
+zybo> devmem 0x40000000 32 # read temperature and humidity level
+zybo> devmem 0x40000004 32 # read status (00...00 | PE | B | CE)
+zybo> devmem 0x40000008 32 # read out of range, should raise error
+zybo> devmem 0x40000000 32 0 # write in range, should raise error
+zybo> devmem 0x40000004 32 0 # write in range, should raise error
+zybo> devmem 0x40000008 32 0 # write out of range, should raise error
+```
+
+Results:  
+```bash
+zybo> devmem 0x40000000 32
+0x24001900
+zybo> devmem 0x40000004 32
+0x00000000
+zybo> devmem 0x40000008 32
+Unhandled fault: external abort on non-linefetch (0x018) at 0xb6f72008
+pgd = dde58000
+[b6f72008] *pgd=1dd6f831, *pte=40000783, *ppte=40000e33
+Bus error
+zybo> devmem 0x40000000 32 0
+Unhandled fault: external abort on non-linefetch (0x1818) at 0xb6fc5000
+pgd = ddd50000
+[b6fc5000] *pgd=1dce7831, *pte=40000743, *ppte=40000c33
+Bus error
+zybo> devmem 0x40000004 32 0
+Unhandled fault: external abort on non-linefetch (0x1818) at 0xb6f67004
+pgd = dde58000
+[b6f67004] *pgd=1dce7831, *pte=40000743, *ppte=40000c33
+Bus error
+zybo> devmem 0x40000008 32 0
+Unhandled fault: external abort on non-linefetch (0x818) at 0xb6f7e008
+pgd = ddd50000
+[b6f7e008] *pgd=1dce7831, *pte=40000743, *ppte=40000c33
+Bus error
+```
