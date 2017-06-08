@@ -164,9 +164,9 @@ The datapath has been designed at RT-level according to a behavioral view. It co
 
 ## Functional Validation
 The design has been validated through three simulation environments:
-* sim/dht_emul.vhd: a complete simulation environment for dht11_sa(rtl) where a full 40-bit data transmission between the sensor and the controller is executed.
-* sim/dht11_ctrl_sim_old: a complete simulation environment for dht11_ctrl(rtl) with two generic parameters, the margin for protocol error detection and the clock frequency.
-* sim/dht11_ctrl_sim: a less aggressive simulation environment for dht11_ctrl(rtl) with no generic parameters and a fixed clock frequency equal to 2 MHz.
+* [sim/dht_emul.vhd](sim/dht_emul.vhd): a complete simulation environment for dht11_sa(rtl) where a full 40-bit data transmission between the sensor and the controller is executed.
+* [sim/dht11_ctrl_sim_old.vhd](sim/dht11_ctrl_sim_old.vhd): a complete simulation environment for dht11_ctrl(rtl) with two generic parameters, the margin for protocol error detection and the clock frequency.
+* [sim/dht11_ctrl_sim.vhd](sim/dht11_ctrl_sim.vhd): a less aggressive simulation environment for dht11_ctrl(rtl) with no generic parameters and a fixed clock frequency equal to 2 MHz.
 
 ## Synthesis
 
@@ -275,7 +275,7 @@ The AXI4 lite wrapper around the dht11_ctrl(rtl) handles the communication proto
 
 ## Functional Validation
 The design has been validated through one simulation environment:
-* sim/dht11_axi_sim.vhd: a complete simulation environment for dht11_axi(rtl);
+* [sim/dht11_axi_sim.vhd](sim/dht11_axi_sim.vhd): a complete simulation environment for dht11_axi(rtl);
 
 ## Synthesis
 
