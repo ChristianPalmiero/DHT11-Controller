@@ -1,7 +1,7 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-| Date         : Wed Jun  7 12:57:36 2017
+| Date         : Thu Jun  8 11:13:48 2017
 | Host         : mc-Lenovo-G500 running 64-bit Ubuntu 16.04.2 LTS
 | Command      : report_timing_summary -warn_on_violation -max_paths 10 -file top_wrapper_timing_summary_routed.rpt -rpx top_wrapper_timing_summary_routed.rpx
 | Design       : top_wrapper
