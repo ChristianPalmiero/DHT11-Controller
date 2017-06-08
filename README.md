@@ -14,7 +14,7 @@ This project consist of a complete digital hardware design of a controller for t
 
 ## Directory Structure
 The "sim" folder contains all the files intended for the simulation of the DHT11 Controller; the "syn" folder contains the synthesizable version of the same files plus the synthesis scripts.  
-The "syn" folder contains also two sub-directories: "Standalone", with some useful results of the standalone version synthesis, and "AXI4Lite", with some useful results of the AXI4Lite version synthesis.   
+The "syn" folder contains also two sub-directories: "Standalone", with the results of the standalone version synthesis, and "AXI4Lite", with the results of the AXI4Lite version synthesis.   
 
 # Standalone Version
 ## Detailed Specifications
@@ -302,6 +302,9 @@ Results:
 ```bash
 zybo> devmem 0x40000000 32
 0x24001900
+```
+Humidity: 36%, Temperature: 25°C
+```bash
 zybo> devmem 0x40000004 32
 0x00000000
 zybo> devmem 0x40000008 32
